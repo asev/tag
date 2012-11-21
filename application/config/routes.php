@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "nana";
+$route['default_controller'] = "main";
 $route['404_override'] = '';
 $route['user/(:num)'] = "user/selectUser/$1";
 

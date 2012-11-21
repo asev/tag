@@ -31,7 +31,8 @@ class Request_model extends CI_Model {
      */
     public function getWaitingRequestCount()
     {
-        $waiting = 0;
+        $waiting = 1;
+        //@TODO implement
         // $waiting - kiek užklausų laukia atsakymo
         return $waiting;
 
@@ -42,9 +43,28 @@ class Request_model extends CI_Model {
      */
     public function getLastRequest()
     {
+        //@TODO Order pagal data
         $this->db->select('requestId, fullName, email, phone, reqText, created');
+        $this->db->order_by('created', 'desc');
         $this->db->limit(1);
         $query = $this->db->get_where('request', array('state' => 0));
+        if ($query->num_rows() == 1) return $query->row();
+        return NULL;
+    }
+
+    public function getLastRequestDate()
+    {
+        $req = $this->getLastRequest();
+        return $req->created;
+    }
+
+    public function getRequest($id) {
+        $this->db->select('request.*, users.username');
+        $this->db->limit(1);
+        $this->db->from('request');
+        $this->db->join('users','users.id = request.manager', 'left');
+        $this->db->where('requestId', $id);
+        $query = $this->db->get();
         if ($query->num_rows() == 1) return $query->row();
         return NULL;
     }
@@ -59,6 +79,7 @@ class Request_model extends CI_Model {
      */
     public function setState($requestId, $managerId)
     {
+        //@TODO implement
         return false;
     }
 

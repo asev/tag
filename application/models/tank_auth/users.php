@@ -369,11 +369,21 @@ class Users extends CI_Model
 		));
 	}
 
-    function getState($user_id)
+    function getType($user_id)
     {
-        $this->db->where('user_id', $user_id);
+        $this->db->where('id', $user_id);
         $query = $this->db->get($this->table_name);
         if ($query->num_rows() == 1) return $query->row()->type;
+        return NULL;
+    }
+
+    function allUsers()
+    {
+        $this->db->select('id, username');
+        $this->db->where('type >', 0);
+        $this->db->order_by('id', "DESC");
+        $query = $this->db->get($this->table_name);
+        if ($query->num_rows() >= 1) return $query->result_array();
         return NULL;
     }
 

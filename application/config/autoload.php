@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database', 'Request', 'tank_auth');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form');
+$autoload['helper'] = array('form', 'url');
 
 
 /*

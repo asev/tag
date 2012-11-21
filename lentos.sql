@@ -32,6 +32,11 @@ CREATE TABLE IF NOT EXISTS `request` (
   `email` varchar(100) NOT NULL,
   `phone` varchar(50),
   `reqText` varchar(5000) NOT NULL,
-  `created` datetime NOT NULL,
+  `state` tinyint(1) NOT NULL DEFAULT 0,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastActivity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `manager` int(4) NOT NULL DEFAULT 0,
+  `completedDate` timestamp DEFAULT NULL,
+  `spam` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`requestId`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

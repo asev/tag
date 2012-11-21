@@ -394,10 +394,16 @@ class Tank_auth
 		return FALSE;
 	}
 
-    function getState()
+    function getUserType()
     {
         $user_id = $this->ci->session->userdata('user_id');
-        return $this->ci->users->getState($user_id);
+       // var_dump($user_id);
+        return $this->ci->users->getType($user_id);
+    }
+
+    function allUsers()
+    {
+        return $this->ci->users->allUsers();
     }
 
 	/**
