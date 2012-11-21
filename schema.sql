@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `username` varchar(50) COLLATE utf8_bin NOT NULL,
   `password` varchar(255) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `type` tinyint(1) NOT NULL DEFAULT '2',
   `activated` tinyint(1) NOT NULL DEFAULT '1',
   `banned` tinyint(1) NOT NULL DEFAULT '0',
   `ban_reason` varchar(255) COLLATE utf8_bin DEFAULT NULL,

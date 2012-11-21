@@ -369,6 +369,14 @@ class Users extends CI_Model
 		));
 	}
 
+    function getState($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $query = $this->db->get($this->table_name);
+        if ($query->num_rows() == 1) return $query->row()->type;
+        return NULL;
+    }
+
 	/**
 	 * Create an empty profile for a new user
 	 *

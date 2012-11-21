@@ -394,6 +394,12 @@ class Tank_auth
 		return FALSE;
 	}
 
+    function getState()
+    {
+        $user_id = $this->ci->session->userdata('user_id');
+        return $this->ci->users->getState($user_id);
+    }
+
 	/**
 	 * Change user email (only when user is logged in) and return some data about user:
 	 * user_id, username, new_email, new_email_key.

@@ -29,6 +29,13 @@ $confirm_password = array(
 	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
 	'size'	=> 30,
 );
+$type = array(
+    'name'	=> 'type',
+    'id'	=> 'type',
+    'value' => set_value('type'),
+    'maxlength'	=> 2,
+    'size'	=> 30,
+);
 $captcha = array(
 	'name'	=> 'captcha',
 	'id'	=> 'captcha',
@@ -59,6 +66,11 @@ $captcha = array(
 		<td><?php echo form_password($confirm_password); ?></td>
 		<td style="color: red;"><?php echo form_error($confirm_password['name']); ?></td>
 	</tr>
+    <tr>
+        <td><?php echo form_label('Type', $type['id']); ?></td>
+        <td><?php echo form_input($type); ?></td>
+        <td style="color: red;"><?php echo form_error($type['name']); ?></td>
+    </tr>
 
 	<?php if ($captcha_registration) {
 		if ($use_recaptcha) { ?>
