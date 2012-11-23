@@ -6,6 +6,12 @@ $managers = array(
     '2' => 'Petras J'
 );
 
+$commentD = array(
+    'name'	=> 'comment',
+    'id'	=> 'comment',
+    'value' => $comment
+);
+
 
 ?>
 <div id="manage-request"><h3>Manage</h3><br>
@@ -15,7 +21,11 @@ switch ($state) {
     case "0" :
         echo anchor('req/assign/' . $requestId, "Priskirti man!");
         echo "<br>";
-        echo anchor('req/spam/' . $requestId, "Pažymėti kaip spam");
+        if ($spam == 0) {
+            echo anchor('req/spam/' . $requestId, "Pažymėti kaip spam");
+        } else {
+            echo anchor('req/spam/' . $requestId, "Pažymėti kaip ne spam");
+        }
         break;
     case "1" :
         if ($manager == $mId) {
@@ -32,6 +42,12 @@ switch ($state) {
         echo "Užklausa atlikta. Bendravo " . $username; //@TODO Nurodyti kuris vadybinikas bendravo
         break;
 }
+
+    echo "<p style='margin-bottom: 0;'>Komentaras:</p>";
+    echo form_open();
+    echo form_textarea($commentD);
+    echo form_submit('submit', "Keisti komentarą");
+    echo form_close();
 
 ?>
     </div>

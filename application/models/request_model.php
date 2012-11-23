@@ -36,43 +36,20 @@ class Request_model extends CI_Model {
     public function getWaitingRequestCount()
     {
         $this->db->from($this->reqTable);
-        $this->db->where('state', '0');
+        $this->db->where('state', 0);
+        $this->db->where('spam', 0);
         return $this->db->count_all_results();
 
     }
 
-    /**
-     * Ar reikalinga???
-     *
-     * @return null
-
-    public function getLastRequest()
-    {
-        //@TODO Istrinti sita
-        $this->db->select('request.*, users.username');
-        $this->db->limit(1);
-        $this->db->from('request');
-        $this->db->join('users','users.id = request.manager', 'left');
-        $this->db->where('state', 0);
-        $this->db->order_by('created', 'DESC');
-        $query = $this->db->get();
-        if ($query->num_rows() == 1) return $query->row();
-        return NULL;
-    }
-
-    public function getLastRequestDate()
-    {
-        $req = $this->getLastRequest();
-        return $req->created;
-    }
-*/
     public function getLastRequestId()
     {
         $this->db->select('requestId');
         $this->db->limit(1);
         $this->db->from($this->reqTable);
         $this->db->where('state', 0);
-        $this->db->order_by('created', 'DESC');
+        $this->db->where('spam', 0);
+        $this->db->order_by('created', 'ASC');
         $query = $this->db->get();
         if ($query->num_rows() == 1) return $query->row()->requestId;
         return NULL;
@@ -89,32 +66,6 @@ class Request_model extends CI_Model {
         return NULL;
     }
 
-    public function getManager($id) {
-        $this->db->select($this->reqTable . '.manager');
-        $this->db->limit(1);
-        $this->db->from($this->reqTable);
-        $this->db->where('requestId', $id);
-        $query = $this->db->get();
-        if ($query->num_rows() == 1) return $query->row()->manager;
-    }
-
-    public function getState($id) {
-        $this->db->select($this->reqTable . '.state');
-        $this->db->limit(1);
-        $this->db->from($this->reqTable);
-        $this->db->where('requestId', $id);
-        $query = $this->db->get();
-        if ($query->num_rows() == 1) return $query->row()->state;
-    }
-
-
-    /**
-     * Sets manager for request and request state = 0
-     *
-     * @param $requestId
-     * @param $managerId
-     * @return bool - true if it was succsessful
-     */
     public function setState($requestId, $state, $manager = null)
     {
         $data = array(
@@ -136,4 +87,21 @@ class Request_model extends CI_Model {
         $this->db->update($this->reqTable, $data);
     }
 
+    public function setComment($requestId, $comment)
+    {
+        $data = array(
+            'comment' => $comment
+        );
+        $this->db->where('requestId', $requestId);
+        $this->db->update($this->reqTable, $data);
+    }
+
+    public function markSpam($requestId, $val)
+    {
+        $data = array(
+            'spam' => $val
+        );
+        $this->db->where('requestId', $requestId);
+        $this->db->update($this->reqTable, $data);
+    }
 }
