@@ -17,6 +17,7 @@ if (is_null($message) && $spam == '1') {
 }
 
 echo "<h1>Uzklausa</h1>";
+//rodo zinute
 if (!is_null($message)) { echo "<i>" . $messages[$message] . "</i><br>"; }
 echo "<br>";
 echo "ID: " . $requestId;
