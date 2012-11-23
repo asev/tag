@@ -132,6 +132,23 @@ Class Req extends CI_Controller
     public function spam($reqId=null)
     {
         //@TODO Pazymeti kaip spam
+        if (!$this->tank_auth->is_logged_in()) {
+            redirect('');
+        } else {
+            if (!is_null($reqId)) {
+                if ($this->reqM->getState($reqId) > 0 && $this->reqM->getManager($reqId) == $this->tank_auth->get_user_id()) {
+                    $this->reqM->setManager($reqId, $this->input->post('nextManager'));
+                    //@TODO nors čia ir dropdown menu, tačiau jam taip pat reiktų validation.
+                    $this->show($reqId, "reassigned");
+                }
+                else {
+                    $this->show($reqId,"not-yours");
+                }
+            } else {
+                $this->view = $this->view . $this->load->view('notfound', array('message' => "not-defined"), true);
+                $this->load->view('page', array('view' => $this->view));
+            }
+        }
     }
 
     public function updateComment($reqId=null)
