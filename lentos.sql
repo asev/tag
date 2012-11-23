@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 3.2.2
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Feb 14, 2011 at 04:09 PM
--- Server version: 5.1.36
--- PHP Version: 5.2.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,13 +8,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `nfq_job`
+-- Database: `tag`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `request`
 --
 
 DROP TABLE IF EXISTS `request`;
@@ -34,9 +26,39 @@ CREATE TABLE IF NOT EXISTS `request` (
   `reqText` varchar(5000) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT 0,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `lastActivity` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `manager` int(4) NOT NULL DEFAULT 0,
-  `completedDate` timestamp DEFAULT NULL,
+  `completedDate` timestamp,
   `spam` tinyint(1) NOT NULL DEFAULT 0,
+  `subject` VARCHAR(500) NOT NULL,
+  `comment` VARCHAR(2000) DEFAULT '',
   PRIMARY KEY (`requestId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Table structure for table `orders`
+--
+
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE IF NOT EXISTS `orders`(
+	`orderId` int(11) NOT NULL AUTO_INCREMENT,
+	`requestId` int(11) NOT NULL,
+	`createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`managerId` int(11) NOT NULL,
+	`active` tinyint(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(`orderId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
+
+--
+-- Table structure for table `items`
+--
+
+DROP TABLE IF EXISTS `items`;
+CREATE TABLE IF NOT EXISTS `items`(
+	`itemId` int(11) NOT NULL AUTO_INCREMENT,
+	`itemName` VARCHAR(300) NOT NULL,
+	`imetPrice` float(7,2) NOT NULL,
+	`itemQuantity` int(8) NOT NULL DEFAULT 0,
+	`active` tinyint(1) NOT NULL DEFAULT 1,
+	PRIMARY KEY(`itemId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
+	

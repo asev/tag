@@ -9,6 +9,9 @@
 
 class Request_model extends CI_Model {
 
+    private $reqTable = "request";
+    private $userTable = "users";
+
     /**
      * Adds new request to database from request-form
      *
@@ -19,9 +22,10 @@ class Request_model extends CI_Model {
             'fullName'=>$this->input->post('full-name'),
             'email'=>$this->input->post('email'),
             'phone'=>$this->input->post('phone'),
+            'subject'=>$this->input->post('subject'),
             'reqText'=>$this->input->post('request-text')
         );
-        $this->db->insert('request', $data);
+        $this->db->insert($this->reqTable, $data);
     }
 
     /**
@@ -31,23 +35,27 @@ class Request_model extends CI_Model {
      */
     public function getWaitingRequestCount()
     {
-        $waiting = 1;
-        //@TODO implement
-        // $waiting - kiek užklausų laukia atsakymo
-        return $waiting;
+        $this->db->from($this->reqTable);
+        $this->db->where('state', '0');
+        return $this->db->count_all_results();
 
     }
 
     /**
+     * Ar reikalinga???
+     *
      * @return null
-     */
+
     public function getLastRequest()
     {
-        //@TODO Order pagal data
-        $this->db->select('requestId, fullName, email, phone, reqText, created');
-        $this->db->order_by('created', 'desc');
+        //@TODO Istrinti sita
+        $this->db->select('request.*, users.username');
         $this->db->limit(1);
-        $query = $this->db->get_where('request', array('state' => 0));
+        $this->db->from('request');
+        $this->db->join('users','users.id = request.manager', 'left');
+        $this->db->where('state', 0);
+        $this->db->order_by('created', 'DESC');
+        $query = $this->db->get();
         if ($query->num_rows() == 1) return $query->row();
         return NULL;
     }
@@ -57,16 +65,46 @@ class Request_model extends CI_Model {
         $req = $this->getLastRequest();
         return $req->created;
     }
+*/
+    public function getLastRequestId()
+    {
+        $this->db->select('requestId');
+        $this->db->limit(1);
+        $this->db->from($this->reqTable);
+        $this->db->where('state', 0);
+        $this->db->order_by('created', 'DESC');
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) return $query->row()->requestId;
+        return NULL;
+    }
 
     public function getRequest($id) {
-        $this->db->select('request.*, users.username');
+        $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
         $this->db->limit(1);
-        $this->db->from('request');
-        $this->db->join('users','users.id = request.manager', 'left');
+        $this->db->from($this->reqTable);
+        $this->db->join($this->userTable, $this->userTable . '.id = ' . $this->reqTable . '.manager', 'left');
         $this->db->where('requestId', $id);
         $query = $this->db->get();
         if ($query->num_rows() == 1) return $query->row();
         return NULL;
+    }
+
+    public function getManager($id) {
+        $this->db->select($this->reqTable . '.manager');
+        $this->db->limit(1);
+        $this->db->from($this->reqTable);
+        $this->db->where('requestId', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) return $query->row()->manager;
+    }
+
+    public function getState($id) {
+        $this->db->select($this->reqTable . '.state');
+        $this->db->limit(1);
+        $this->db->from($this->reqTable);
+        $this->db->where('requestId', $id);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) return $query->row()->state;
     }
 
 
@@ -77,10 +115,25 @@ class Request_model extends CI_Model {
      * @param $managerId
      * @return bool - true if it was succsessful
      */
-    public function setState($requestId, $managerId)
+    public function setState($requestId, $state, $manager = null)
     {
-        //@TODO implement
-        return false;
+        $data = array(
+            'state' => $state
+        );
+        if (!is_null($manager)) {
+            $data['manager'] = $manager;
+        }
+        $this->db->where('requestId', $requestId);
+        $this->db->update($this->reqTable, $data);
+    }
+
+    public function setManager($requestId, $manager)
+    {
+        $data = array(
+            'manager' => $manager
+        );
+        $this->db->where('requestId', $requestId);
+        $this->db->update($this->reqTable, $data);
     }
 
 }

@@ -1,11 +1,4 @@
-<?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Sev
- * Date: 12.11.17
- * Time: 20.14
- * To change this template use File | Settings | File Templates.
- */
+<?php //@toGin Apipavidalinti
 
 // Žinutė rodoma po sėkmingo Request registravimo.
-echo "bravo";
+echo "Ačiū. Su jumis greitai susisieks musu vadybininkas. Geros dienos.";

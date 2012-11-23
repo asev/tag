@@ -1,33 +1,37 @@
-<?php
+<?php //@toGin Vaizdavimas
 
-    $managers = array(
-        'small'  => 'Small Shirt',
-        'med'    => 'Medium Shirt',
-        'large'   => 'Large Shirt',
-        'xlarge' => 'Extra Large Shirt',
-    );
+$managers = array(
+    '' => '',
+    '1' => 'Jonas P',
+    '2' => 'Petras J'
+);
 
 
-switch($state) {
+?>
+<div id="manage-request"><h3>Manage</h3><br>
+    <?php
+switch ($state) {
 
     case "0" :
-        echo anchor('req/assign/'. $requestId ,"Priskirti man!");
-        echo anchor('req/spam/'. $requestId ,"Pažymėti kaip spam");
+        echo anchor('req/assign/' . $requestId, "Priskirti man!");
+        echo "<br>";
+        echo anchor('req/spam/' . $requestId, "Pažymėti kaip spam");
         break;
     case "1" :
         if ($manager == $mId) {
-            echo anchor('order/add/'. $requestId ,"Sukurti užsakymą"); // Dar nežinau ar tokia nuroda bus
-            echo form_open('req/reassign/'. $requestId);
+            echo anchor('order/add/' . $requestId, "Sukurti užsakymą"); // Dar nežinau ar tokia nuoroda bus
+            echo form_open('req/reassign/' . $requestId);
             echo form_dropdown('nextManager', $managers);
             echo form_submit('submit', 'Keisti vadybininką');
             echo form_close();
-            echo anchor('req/reassign/'. $requestId ,"Perleisti kitam vadybinkui"); // @TODO Čia reiks padaryti input, kur bus galima išskirinkti iš kitų vadybininkų
         } else {
             echo "Su klientu bendrauja " . $username;
         }
         break;
     case "2" :
-        echo "Užklausa atlikta."; //@TODO Nurodyti kuris vadybinikas bendravo
+        echo "Užklausa atlikta. Bendravo " . $username; //@TODO Nurodyti kuris vadybinikas bendravo
         break;
 }
 
+?>
+    </div>

@@ -1,6 +1,7 @@
+<?php //@todo pabaigti ir priskirtirti Gintarei Grazus vaizdavimas
+?>
 <div id="main-manager">
         Vadybininko langas.
         Laukia: <?php echo $waiting;?>
-    Naujausias: <?php echo $newest; ?>
-    <?php echo anchor('req/last','Paskutinė užklausa'); ?>
+    <?php if ($waiting > 0) echo anchor('req/last','Paskutinė užklausa'); ?>
     </div>
