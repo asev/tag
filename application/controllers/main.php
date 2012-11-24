@@ -8,6 +8,13 @@ class Main extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('request_model', "reqM");
+        if ($this->tank_auth->is_logged_in()) {
+            $this->load->library('form_validation');
+            $this->form_validation->set_rules('search', 'Search', 'trim|required|max_length[60]|xss_clean');
+            if ($this->form_validation->run()) {
+                redirect('reqs/search/'. $this->input->post('search'));
+            }
+        }
     }
 
     public function index()

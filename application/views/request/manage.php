@@ -24,7 +24,7 @@ switch ($state) {
         if ($spam == 0) {
             echo anchor('req/spam/' . $requestId, "Pažymėti kaip spam");
         } else {
-            echo anchor('req/spam/' . $requestId, "Pažymėti kaip ne spam");
+            echo anchor('req/unspam/' . $requestId, "Pažymėti kaip ne spam");
         }
         break;
     case "1" :
@@ -39,7 +39,7 @@ switch ($state) {
         }
         break;
     case "2" :
-        echo "Užklausa atlikta. Bendravo " . $username; //@TODO Nurodyti kuris vadybinikas bendravo
+        echo "Užklausa atlikta. Bendravo " . $username;
         break;
 }
 

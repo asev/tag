@@ -17,11 +17,7 @@ Class Req extends CI_Controller
 
     public function index()
     {
-        if ($this->tank_auth->is_logged_in()) { // logged in
-            redirect('');
-        } else {
-            redirect('req/add');
-        }
+        redirect('');
     }
 
     public function add()
@@ -155,7 +151,7 @@ Class Req extends CI_Controller
         }
     }
 
-    /**@TODO Turi keisti masyva. Dabar yra var_dump($old), o turi būti
+    /**
      * $managers = array(
      *    'id'  => 'username',
      *    'id'  => 'username'

@@ -28,6 +28,48 @@ class Request_model extends CI_Model {
         $this->db->insert($this->reqTable, $data);
     }
 
+    public function getCondCount($conditions) {
+        $this->db->select('requestId');
+        $this->db->from($this->reqTable);
+        $this->db->where($conditions);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function getCond($conditions, $start, $limit) {
+        $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
+        $this->db->limit($limit, $start);
+        $this->db->from($this->reqTable);
+        $this->db->join($this->userTable, $this->userTable . '.id = ' . $this->reqTable . '.manager', 'left');
+        $this->db->where($conditions);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getSearchCount($match) {
+        $this->db->select('requestId');
+        $this->db->from($this->reqTable);
+        $this->db->like('subject', $match);
+        $this->db->or_like('reqText', $match);
+        $this->db->or_like($this->reqTable . '.email', $match);
+        $this->db->or_like('comment', $match);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function getSearch($match, $start, $limit) {
+        $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
+        $this->db->limit($limit, $start);
+        $this->db->from($this->reqTable);
+        $this->db->join($this->userTable, $this->userTable . '.id = ' . $this->reqTable . '.manager', 'left');
+        $this->db->like('subject', $match);
+        $this->db->or_like('reqText', $match);
+        $this->db->or_like($this->reqTable . '.email', $match);
+        $this->db->or_like('comment', $match);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     /**
      * Calculate waiting requests
      *
