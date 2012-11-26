@@ -49,15 +49,15 @@ $request = array(
         <?php echo form_open(''); ?>
         <p class="flabel"><?php echo form_label('Vardas', $fullName['id']); ?></p>
         <?php echo form_input($fullName); ?>
-        <p class="flabel"><?php echo form_label('El. pastas', $email['id']); ?></p>
+        <p class="flabel"><?php echo form_label('El. paštas', $email['id']); ?></p>
         <?php echo form_input($email); ?>
         <p class="flabel"><?php echo form_label('Telefono numeris', $phoneNumber['id']); ?></p>
         <?php echo form_input($phoneNumber); ?>
         <p class="flabel"><?php echo form_label('Tema', $subject['id']); ?></p>
         <?php echo form_input($subject); ?>
-        <p class="flabel"><?php echo form_label('Uzklausa', $request['id']); ?></p>
+        <p class="flabel"><?php echo form_label('Užklausa', $request['id']); ?></p>
         <?php echo form_textarea($request);?>
         <br>
-        <?php echo form_submit('submit','pateikti');?>
+        <?php echo form_submit('submit','Sukurti užklausą');?>
         <?php echo form_close(); ?>
     </div>

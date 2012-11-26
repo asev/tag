@@ -5,10 +5,10 @@ $messages = array(
     'already-assigned' => "Užklausa jau priskirta kitam vadybininkui",
     'reassigned' => "Sėkmingai pakeitėte užklausos vadybininką",
     'not-yours' => "Negalima pakeisti vadybininko. Ši užklausa nepriklauso jums.",
-    'spammed' => "Pazymojote kaip  šlamštas.",
+    'spammed' => "Pažymojote kaip  šlamštas.",
     'unspammed' => "Pažymėta kaip nebe spam",
-    'already-spammed' => "Jau buvo pazymeta, kad slamstas",
-    'already-unspammed' => "Tai kad ir taip cia nera slamstas",
+    'already-spammed' => "Jau buvo pažymėta, kaip šlamštas",
+    'already-unspammed' => "Tai kad ir taip čia nėra šlamštas",
     'spam' => "Čia šlamštas"
 );
 
@@ -16,20 +16,33 @@ if (is_null($message) && $spam == '1') {
     $message = 'spam';
 }
 
-echo "<h1>Uzklausa</h1>";
 //rodo zinute
 if (!is_null($message)) { echo "<i>" . $messages[$message] . "</i><br>"; }
-echo "<br>";
-echo "ID: " . $requestId;
-echo "<br>";
-echo "name: " .$fullName;
-echo "<br>";
-echo "email: " . $email;
-echo "<br>";
-echo "phone: " . $phone;
-echo "<br>";
-echo "subject: " . $subject;
-echo "<br>";
-echo "uzklausa: " . $reqText;
-echo "<br>";
-echo "sukurta: " . $created;
+?>
+<div id="request">
+<table>
+    <tr>
+        <td>Tema:</td>
+        <td><h2><?php echo $subject; ?><h2></h2></td>
+    </tr>
+    <tr>
+        <td>Informacija apie klientą:</td>
+        <td>
+            <ul>
+                <li><?php echo $fullName; ?></li>
+                <li><?php echo $email; ?></li>
+                <li><?php echo $phone; ?></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>Užklausa:</td>
+        <td><?php echo $reqText; ?></td>
+    </tr>
+    <tr>
+        <td>Sukurta:</td>
+        <td><?php echo $created; ?></td>
+    </tr>
+</table>
+    </div>
+

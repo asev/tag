@@ -1,11 +1,13 @@
-<?php
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="../../css/style.css">
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>/css/style.css">
     <meta charset="UTF-8">
 </head>
 
 <body>
-<h1>Tag</h1>
+<div id="layout">
+<div id="header">
+<h1>TAG</h1>
+</div>
+    <div id="content">
