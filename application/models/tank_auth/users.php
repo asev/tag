@@ -371,6 +371,15 @@ class Users extends CI_Model
 		));
 	}
 
+    function searchUser($match)
+    {
+        $this->db->like('username', $match);
+        $this->db->or_like('email', $match);
+        $query = $this->db->get($this->table_name);
+        if ($query->num_rows() >= 1) return $query->result_array();
+        return NULL;
+    }
+
     function getType($user_id)
     {
         $this->db->where('id', $user_id);

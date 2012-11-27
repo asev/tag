@@ -21,9 +21,10 @@ class Request_model extends CI_Model {
         $data=array(
             'fullName'=>$this->input->post('full-name'),
             'email'=>$this->input->post('email'),
-            'phone'=>$this->input->post('phone'),
+            'phone'=>$this->input->post('phoneNumber'),
             'subject'=>$this->input->post('subject'),
-            'reqText'=>$this->input->post('request-text')
+            'reqText'=>$this->input->post('request-text'),
+            'created'=>date("Y-m-d H:i:s")
         );
         $this->db->insert($this->reqTable, $data);
     }
@@ -36,7 +37,7 @@ class Request_model extends CI_Model {
         return $query->num_rows();
     }
 
-    public function getCond($conditions, $start, $limit) {
+    public function getCond($conditions, $start=0, $limit=20) {
         $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
         $this->db->limit($limit, $start);
         $this->db->from($this->reqTable);
@@ -108,42 +109,31 @@ class Request_model extends CI_Model {
         return NULL;
     }
 
-    public function setState($requestId, $state, $manager = null)
+    public function setRequest($requestId, $data)
     {
-        $data = array(
-            'state' => $state
-        );
-        if (!is_null($manager)) {
-            $data['manager'] = $manager;
-        }
         $this->db->where('requestId', $requestId);
         $this->db->update($this->reqTable, $data);
     }
 
-    public function setManager($requestId, $manager)
-    {
-        $data = array(
-            'manager' => $manager
-        );
-        $this->db->where('requestId', $requestId);
-        $this->db->update($this->reqTable, $data);
+    public function statManagerNames($cond) {
+        $this->db->select($this->userTable . '.username,' . $this->reqTable .'.manager, COUNT(' . $this->reqTable . '.requestId) AS \'count\'');
+        $this->db->from($this->reqTable);
+        $this->db->join($this->userTable, $this->userTable . '.id = ' . $this->reqTable . '.manager', 'left');
+        if (!is_null($cond)) { $this->db->where($cond); }
+        $this->db->group_by($this->reqTable . '.manager');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
-    public function setComment($requestId, $comment)
-    {
-        $data = array(
-            'comment' => $comment
-        );
-        $this->db->where('requestId', $requestId);
-        $this->db->update($this->reqTable, $data);
+    public function statManagerCount($cond) {
+        $this->db->select($this->reqTable .'.manager, COUNT(' . $this->reqTable . '.requestId) AS \'count\'');
+        $this->db->from($this->reqTable);
+        $this->db->where($cond);
+        $this->db->group_by($this->reqTable . '.manager');
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
-    public function markSpam($requestId, $val)
-    {
-        $data = array(
-            'spam' => $val
-        );
-        $this->db->where('requestId', $requestId);
-        $this->db->update($this->reqTable, $data);
-    }
+   // public function statR
+
 }

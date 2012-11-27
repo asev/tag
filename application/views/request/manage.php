@@ -30,6 +30,8 @@ switch ($state) {
     case "1" :
         if ($manager == $mId) {
             echo anchor('order/add/' . $requestId, "Sukurti užsakymą"); // Dar nežinau ar tokia nuoroda bus
+            echo anchor('req/finish/' . $requestId . '/2', "Sekminga užklausa");
+            echo anchor('req/finish/' . $requestId .'/3', "Nesekminga užklausa");
             echo form_open('req/reassign/' . $requestId);
             echo form_dropdown('nextManager', $managers);
             echo form_submit('submit', 'Keisti vadybininką');
@@ -38,9 +40,8 @@ switch ($state) {
             echo "Su klientu bendrauja " . $username;
         }
         break;
-    case "2" :
+    default :
         echo "Užklausa atlikta. Bendravo " . $username;
-        break;
 }
 
     echo "<p style='margin-bottom: 0;'>Komentaras:</p>";
