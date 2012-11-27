@@ -1,11 +1,29 @@
-<?php
-?>
 <!DOCTYPE html>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="../../css/style.css">
+    <title>TAG</title>
+    <link type="text/css" rel="stylesheet" href="<?php echo base_url();?>/css/style.css">
     <meta charset="UTF-8">
 </head>
 
 <body>
-<h1>Tag</h1>
+<div id="layout">
+<div id="header">
+    <div class="tag-logo">
+        <img src="/img/tag_logo.png" alt="logo">
+    </div>
+    <div id="meniu">
+        <h2><a href="">Pradžia</a></h2>
+        <p>|</p>
+        <h2><a href="">Užklausos</a></h2>
+        <p>|</p>
+        <h2><a href="">Istorija</a></h2>
+        <p>|</p>
+        <h2><a href="">Šlamštas</a></h2>
+        <div class="search">
+        <input type="text" name="search">
+            <button type="button"></button>
+        </div>
+    </div>
+</div>
+    <div id="content">
