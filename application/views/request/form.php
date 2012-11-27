@@ -40,8 +40,6 @@ $request = array(
     'id'	=> 'request-text',
     'value' => set_value('request'),
     'maxlength'	=> 2000,
-
-    'size'	=> 100,
 );
 ?>
     <div id="request-form">

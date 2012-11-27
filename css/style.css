@@ -5,7 +5,6 @@ body {
     color: #303030;
 }
 
-
 #layout{
     margin: 0 auto;
     width: 800px;
@@ -27,9 +26,11 @@ color: #d0553d;
  }
 
 #request-form{
-    width: 462px;
+    padding-left: 50px;
     margin: 0 auto;
     height: 450px;
+    display: block;
+    padding-top: 16px;
 }
 
 #request-form .flabel{
@@ -41,8 +42,8 @@ color: #d0553d;
 }
 
 #footer {
-    padding: 10px 0 10px 0px;
-    margin-left: 15px;
+    margin: -5px 0 10px 0px;
+    width: 100%;
     color: #AAA;
     border-top: 1px solid #DADADA;
 }
@@ -66,4 +67,45 @@ ul li{
 
 li{
     margin-left: 10px;
+}
+
+#meniu{
+    background-color: #cb4329;
+    height: 40px;
+    width: 100%;
+}
+
+#meniu h2,#meniu p,#meniu a{
+    float: left;
+    color: #ffffff;
+    font-size: 1.000em;
+    padding-left: 20px;
+    padding-right: 5px;
+}
+
+#meniu h2,a{
+    text-decoration: none;
+}
+
+#meniu h2 a:hover{
+    color: #f2aa7a;
+}
+
+#meniu .search{
+    position: relative;
+    float: right;
+    margin-right: 30px;
+    margin-top: 7px;
+    display: inline;
+}
+
+#meniu .search input{
+    border: 1px solid #757575;
+}
+
+#meniu .search button{
+    background: url("/img/search-icon.png") no-repeat;
+    width: 28px;
+    height: 19px;
+    border: none;
 }
