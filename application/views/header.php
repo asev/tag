@@ -21,10 +21,11 @@ $submit = array(
     </div>
     <div id="meniu">
         <ul>
-        <li><a href="">Pradžia</a></li>
-        <li><a href="">Užklausos</a></li>
-        <li><a href="">Istorija</a></li>
-        <li><a href="">Šlamštas</a></li>
+        <li class="border"><?php echo anchor('main','Pradžia'); ?></li>
+        <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
+        <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
+        <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'); ?></li>
         </ul>
         <div class="search">
             <?php echo form_open('');
