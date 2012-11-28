@@ -1,3 +1,57 @@
+/*RESET*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    /*font-size: 100%;*/
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6 { margin:15px 0 7px 0; }
+h1 { font-size:200%; }
+h2 { font-size:160%; font-weight: normal; color: #d0553d; }
+h3 { font-size:105%; padding-bottom: 5px; margin-top: 25px; margin-bottom: 14px;}
+h4 { font-size:120%; }
+h5 { font-size:100%; }
+
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
 body {
     padding: 0;
     background: #fff url('/img/bg.jpg') repeat-x;
@@ -58,15 +112,50 @@ color: #d0553d;
 }
 
 #request{
-    margin-left: 35px;
+    float: left;
+    margin-top: 20px;
 }
 
-ul li{
-    display: inline-table;
+#request .subject-date p,h2{
+    display: inline;
 }
 
-li{
-    margin-left: 10px;
+.subject-date, .client-information{
+    margin-bottom: 15px;
+}
+
+#request .subject-date p{
+    float: right;
+    color: #767676;
+}
+
+#request .subject-date h2{
+    color: #a5422f;
+}
+
+#request .client-information p{
+    float: left;
+    width: 33%;
+}
+
+.pcenter {
+    text-align: center;
+}
+
+.pright {
+    text-align: right;
+}
+
+p.bold{
+    font-weight: bold;
+}
+
+p.italic{
+    font-style: italic;
+}
+
+.clear{
+    clear: both;
 }
 
 #meniu{
@@ -75,19 +164,34 @@ li{
     width: 100%;
 }
 
-#meniu h2,#meniu p,#meniu a{
-    float: left;
-    color: #ffffff;
-    font-size: 1.000em;
-    padding-left: 20px;
-    padding-right: 5px;
+#meniu ul li{
+    display: inline;
+    padding: 3px 29px;
 }
 
-#meniu h2,a{
+#meniu li.border{
+    border-right: 1px solid #ffffff;
+}
+
+#meniu li.border-none{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-image: -webkit-linear-gradient(left, #791717 0%, #EA5132 100%);
+}
+
+#meniu ul{
+    padding-top: 11px;
+    float: left;
+}
+
+
+#meniu a{
+    color: #ffffff;
     text-decoration: none;
 }
 
-#meniu h2 a:hover{
+#meniu a:hover{
     color: #f2aa7a;
 }
 
@@ -103,9 +207,10 @@ li{
     border: 1px solid #757575;
 }
 
-#meniu .search button{
+#meniu .search input.submit{
     background: url("/img/search-icon.png") no-repeat;
     width: 28px;
     height: 19px;
     border: none;
 }
+

@@ -1,3 +1,10 @@
+<?php
+$submit = array(
+    'name'	=> 'submit',
+    'class'	=> 'submit',
+);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +23,18 @@
     <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
     <?php echo $waiting; ?>
     <div id="meniu">
-        <h2><a href="">Pradžia</a></h2>
-        <p>|</p>
-        <h2><a href="">Užklausos</a></h2>
-        <p>|</p>
-        <h2><a href="">Istorija</a></h2>
-        <p>|</p>
-        <h2><a href="">Šlamštas</a></h2>
+        <ul>
+        <li class="border"><?php echo anchor('main','Pradžia'); ?></li>
+        <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
+        <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
+        <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'); ?></li>
+        </ul>
         <div class="search">
-        <input type="text" name="search">
-            <button type="button"></button>
+            <?php echo form_open('');
+            echo form_input('search', set_value('search'));
+            echo form_submit($submit);
+            echo form_close(); ?>
         </div>
     </div>
         <?php endif;?>
