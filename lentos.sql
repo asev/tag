@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `orders`(
 	`createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`managerId` int(11) NOT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
+	`comment` VARCHAR(2000) DEFAULT '',
 	PRIMARY KEY(`orderId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
 
@@ -55,9 +56,10 @@ CREATE TABLE IF NOT EXISTS `orders`(
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items`(
-	`itemId` int(11) NOT NULL AUTO_INCREMENT,
+	`itemId` int(11) NOT NULL,
+	`orderId` int(11) NOT NULL,
 	`itemName` VARCHAR(300) NOT NULL,
-	`imetPrice` float(7,2) NOT NULL,
+	`itemPrice` float(7,2) NOT NULL,
 	`itemQuantity` int(8) NOT NULL DEFAULT 0,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
 	PRIMARY KEY(`itemId`)
