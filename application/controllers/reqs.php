@@ -108,7 +108,7 @@ Class Reqs extends CI_Controller
         } else {
             $this->view = $this->view . $this->load->view('notfound', array('message' => "wrong-page"), true);
         }
-        $this->load->view('page', array('view' => $this->view));
+        $this->displayer->DisplayView($this->view);
     }
 
 }

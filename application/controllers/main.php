@@ -35,11 +35,10 @@ class Main extends CI_Controller {
 
     public function boss($stats=1, $term=2)
     {
-        if ($this->checkType() != 1) {
+        if ($this->checkType() != 2) {
             $this->typeRedirect($this->checkType());
         } else {
-            $data['waiting'] = $this->reqM->getWaitingRequestCount();
-            $data['username'] = $this->username;
+            $data = array();
             $this->view = $this->view . $this->load->view('main/boss', $data, true);
 
             switch ($stats) {
@@ -58,8 +57,7 @@ class Main extends CI_Controller {
                     $this->view = $this->view . $this->load->view('main/current_stats', $stat, true);
                     break;
             }
-
-            $this->load->view('page', array('view' => $this->view));
+            $this->displayer->DisplayView($this->view);
         }
     }
 
@@ -68,11 +66,9 @@ class Main extends CI_Controller {
         if ($this->checkType() != 2) {
             $this->typeRedirect($this->checkType());
         } else {
-            $data['waiting'] = $this->reqM->getWaitingRequestCount();
-            $data['username'] = $this->username;
-           // if ($data['waiting'] > 0) $data['newest'] = $this->reqM->getLastRequestDate();
+            $data = array();
             $this->view = $this->view . $this->load->view('main/manager', $data, true);
-            $this->load->view('page', array('view' => $this->view));
+            $this->displayer->DisplayView($this->view);
         }
     }
 
@@ -99,7 +95,6 @@ class Main extends CI_Controller {
         }
     }
 
-    //@TODO terminų (datos) keitimo trūksta
     private function statManagers($c) {
         $tableArray = array();
 
@@ -135,7 +130,6 @@ class Main extends CI_Controller {
         return $tableArray;
     }
 
-    //@TODO terminų (datos) keitimo trūksta
     private function statReqDate($c) {
         $r['r_new'] = $this->reqM->getCondCount($c['creatCond']);
         $r['r_spam'] = $this->reqM->getCondCount(array_merge($c['creatCond'], array('spam' => 1)));

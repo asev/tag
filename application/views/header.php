@@ -11,7 +11,10 @@
 <div id="header">
     <div class="tag-logo">
         <img src="/img/tag_logo.png" alt="logo">
-    </div>
+
+    </div><?php if (!is_null($me)) :?> <p><?php echo $me; ?> |
+    <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
+    <?php echo $waiting; ?>
     <div id="meniu">
         <h2><a href="">Pradžia</a></h2>
         <p>|</p>
@@ -25,5 +28,6 @@
             <button type="button"></button>
         </div>
     </div>
+        <?php endif;?>
 </div>
     <div id="content">

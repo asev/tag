@@ -38,23 +38,7 @@ Class Req extends CI_Controller
                 $this->view = $this->view . $this->load->view('request/form', $data, true);
             }
         }
-        $this->load->view('page', array('view' => $this->view));
-    }
-
-    public function last()
-    {
-        $reqId = $this->reqM->getLastRequestId();
-        if (!$this->tank_auth->is_logged_in()) {
-            redirect('');
-        } else {
-            $reqId = $this->reqM->getLastRequestId();
-            if (!is_null($reqId)) {
-                $this->show($reqId);
-            } else {
-                $this->view = $this->view . $this->load->view('notfound', array('message' => "no-last"), true);
-                $this->load->view('page', array('view' => $this->view));
-            }
-        }
+        $this->displayer->DisplayView($this->view);
     }
 
     public function show($reqId = null, $message = null)
@@ -95,7 +79,7 @@ Class Req extends CI_Controller
         if ($this->tank_auth->getUserType() == 2) {
             $this->view = $this->view . $this->load->view('request/manage', $data, true);
         }
-        $this->load->view('page', array('view' => $this->view));
+        $this->displayer->DisplayView($this->view);
     }
 
     public function assign($reqId = null)
@@ -236,7 +220,7 @@ Class Req extends CI_Controller
         if ($this->view == "") {
             return true;
         } else {
-            $this->load->view('page', array('view' => $this->view));
+            $this->displayer->DisplayView($this->view);
             return false;
         }
     }

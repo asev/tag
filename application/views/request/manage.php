@@ -1,4 +1,4 @@
-<?php //@toGin Vaizdavimas
+<?php
 
 $managers = array(
     '' => '',
@@ -30,8 +30,8 @@ switch ($state) {
     case "1" :
         if ($manager == $mId) {
             echo anchor('order/add/' . $requestId, "Sukurti užsakymą"); // Dar nežinau ar tokia nuoroda bus
-            echo anchor('req/finish/' . $requestId . '/2', "Sekminga užklausa");
-            echo anchor('req/finish/' . $requestId .'/3', "Nesekminga užklausa");
+            echo anchor('req/finish/' . $requestId . '/2', "Test: Sekminga užklausa");
+            echo anchor('req/finish/' . $requestId .'/3', "Test: Nesekminga užklausa");
             echo form_open('req/reassign/' . $requestId);
             echo form_dropdown('nextManager', $managers);
             echo form_submit('submit', 'Keisti vadybininką');

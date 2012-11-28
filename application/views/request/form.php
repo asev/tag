@@ -1,4 +1,4 @@
-<?php   //@toGin sutvarkyti sita forma
+<?php
 $fullName = array(
     'name'	=> 'full-name',
     'id'	=> 'full-name',

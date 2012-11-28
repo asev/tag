@@ -1,4 +1,4 @@
-<?php
+<?php //@TODO Gražus 404 puslapis su tekstuku
 
 $messages = array(
     'not-found' => "Užklausa nerasta",
