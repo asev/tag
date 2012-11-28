@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `orders`(
 	`createDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`managerId` int(11) NOT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
+	`comment` VARCHAR(2000) DEFAULT '',
 	PRIMARY KEY(`orderId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
 
