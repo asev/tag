@@ -22,29 +22,18 @@ if (is_null($message) && $spam == '1') {
 if (!is_null($message)) { echo "<i>" . $messages[$message] . "</i><br>"; }
 ?>
 <div id="request">
-<table>
-    <tr>
-        <td>Tema:</td>
-        <td><h2><?php echo $subject; ?><h2></h2></td>
-    </tr>
-    <tr>
-        <td>Informacija apie klientą:</td>
-        <td>
-            <ul>
-                <li><?php echo $fullName; ?></li>
-                <li><?php echo $email; ?></li>
-                <li><?php echo $phone; ?></li>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>Užklausa:</td>
-        <td><?php echo $reqText; ?></td>
-    </tr>
-    <tr>
-        <td>Sukurta:</td>
-        <td><?php echo $created; ?></td>
-    </tr>
-</table>
+    <div class="subject-date">
+    <h2><?php echo $subject; ?></h2>
+    <p><?php echo $created; ?></p>
     </div>
+    <div class="client-information">
+        <p class="bold"><?php echo $fullName; ?></p>
+        <p class="pcenter italic"><?php echo $email; ?></p>
+        <p class="pright italic"><?php echo $phone; ?></p>
+        <div class="clear"></div>
+    </div>
+    <div class="request-text">
+    <p><?php echo $reqText; ?></p>
+    </div>
+</div>
 

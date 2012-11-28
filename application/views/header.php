@@ -1,3 +1,10 @@
+<?php
+$submit = array(
+    'name'	=> 'submit',
+    'class'	=> 'submit',
+);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,16 +20,17 @@
         <img src="/img/tag_logo.png" alt="logo">
     </div>
     <div id="meniu">
-        <h2><a href="">Pradžia</a></h2>
-        <p>|</p>
-        <h2><a href="">Užklausos</a></h2>
-        <p>|</p>
-        <h2><a href="">Istorija</a></h2>
-        <p>|</p>
-        <h2><a href="">Šlamštas</a></h2>
+        <ul>
+        <li><a href="">Pradžia</a></li>
+        <li><a href="">Užklausos</a></li>
+        <li><a href="">Istorija</a></li>
+        <li><a href="">Šlamštas</a></li>
+        </ul>
         <div class="search">
-        <input type="text" name="search">
-            <button type="button"></button>
+            <?php echo form_open('');
+            echo form_input('search', set_value('search'));
+            echo form_submit($submit);
+            echo form_close(); ?>
         </div>
     </div>
 </div>
