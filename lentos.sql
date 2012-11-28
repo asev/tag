@@ -55,9 +55,10 @@ CREATE TABLE IF NOT EXISTS `orders`(
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items`(
-	`itemId` int(11) NOT NULL AUTO_INCREMENT,
+	`itemId` int(11) NOT NULL,
+	`orderId` int(11) NOT NULL,
 	`itemName` VARCHAR(300) NOT NULL,
-	`imetPrice` float(7,2) NOT NULL,
+	`itemPrice` float(7,2) NOT NULL,
 	`itemQuantity` int(8) NOT NULL DEFAULT 0,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
 	PRIMARY KEY(`itemId`)
