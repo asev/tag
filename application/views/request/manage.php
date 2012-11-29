@@ -34,8 +34,12 @@ switch ($state) {
             echo "Su klientu bendrauja " . $username;
         }
         break;
-    default :
-        echo "Užklausa atlikta. Bendravo " . $username;
+    case "2" :
+        echo "Užklausa atlikta sėkmingai. Bendravo " . $username;
+        break;
+    case "3" :
+        echo "Užklausa atlikta. Pardavimas nepavyko. Bendravo " . $username;
+        break;
 }
 
     echo "<p style='margin-bottom: 0;'>Komentaras:</p>";

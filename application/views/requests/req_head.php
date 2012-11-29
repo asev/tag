@@ -1,11 +1,17 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Sev
- * Date: 12.11.24
- * Time: 21.29
- * To change this template use File | Settings | File Templates.
- */
-echo "req_head<br>";
 echo "Viso: " . $length;
 echo "<br>";
+if (!$boss) {
+    echo '<style type="text/css"> #requests-list .manager{display: none;}</style>';
+}
+?>
+
+<table id="requests-list">
+    <tr>
+        <th class="subject">Tema</th>
+        <th class="created">Sukurta</th>
+        <th class="author">Autorius</th>
+        <th class="email">El. paštas</th>
+        <th class="manager">Vadybininkas</th>
+        <th></th>
+    </tr>

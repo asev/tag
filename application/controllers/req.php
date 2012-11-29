@@ -71,14 +71,11 @@ Class Req extends CI_Controller
         // Request vaizdavimas
         $data = get_object_vars($this->request);
         $data['mId'] = $this->tank_auth->get_user_id();
-        //@TODO Sutaisyti fixManagers
         $managers = $this->tank_auth->allUsers();
         $data['managers'] = $this->fixManagers($managers);
         $data['message'] = $message;
         $this->view = $this->view . $this->load->view('request/show', $data, true);
-        if ($this->tank_auth->getUserType() == 2) {
-            $this->view = $this->view . $this->load->view('request/manage', $data, true);
-        }
+        $this->view = $this->view . $this->load->view('request/manage', $data, true);
         $this->displayer->DisplayView($this->view);
     }
 

@@ -35,7 +35,7 @@ class Main extends CI_Controller {
 
     public function boss($stats=1, $term=2)
     {
-        if ($this->checkType() != 2) {
+        if ($this->checkType() != 1) {
             $this->typeRedirect($this->checkType());
         } else {
             $data = array();

@@ -394,8 +394,7 @@ class Users extends CI_Model
         $this->db->where('type >', 0);
         $this->db->order_by('id', "DESC");
         $query = $this->db->get($this->table_name);
-        if ($query->num_rows() >= 1) return $query->result_array();
-        return NULL;
+        return $query->result_array();
     }
 
 	/**

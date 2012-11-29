@@ -31,7 +31,7 @@ $submit = array(
         <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'); ?></li>
         </ul>
         <div class="search">
-            <?php echo form_open('');
+            <?php echo form_open('main');
             echo form_input('search', set_value('search'));
             echo form_submit($submit);
             echo form_close(); ?>

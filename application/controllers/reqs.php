@@ -34,7 +34,7 @@ Class Reqs extends CI_Controller
         $this->auth();
         $cond = array(
             'spam' => 0,
-            'state' => 2
+            'state >' => 1
         );
         if ($this->me->type == 2) {
             $cond['manager'] = $this->me->id;
@@ -77,9 +77,23 @@ Class Reqs extends CI_Controller
             $config['base_url'] = site_url('reqs/'. $func);
             $config['total_rows'] = $this->reqM->getCondCount($cond);
         }
-        $config['per_page'] = 2;
+        $config['per_page'] = 15;
         $config['use_page_numbers'] = TRUE;
         $config['uri_segment'] = $segm;
+        $config['full_tag_open'] = '<div id="pagination">';
+        $config['full_tag_close'] = '</div>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['next_link'] = '&raquo;';
+        $config['prev_link'] = '&laquo;';
+        $config['num_tag_open'] = '<div class="page">';
+        $config['num_tag_close'] = '</div>';
+        $config['cur_tag_open'] = '<div class="page current">';
+        $config['cur_tag_close'] = '</div>';
+        $config['next_tag_open'] = '<div class="next">';
+        $config['next_tag_close'] = '</div>';
+        $config['prev_tag_open'] = '<div class="prev">';
+        $config['prev_tag_close'] = '</div>';
         $currentPage = $this->uri->segment($segm);
         if ($currentPage == 0) {
             $currentPage = 1;
@@ -97,9 +111,14 @@ Class Reqs extends CI_Controller
             } else {
                 $reqs = array();
             }
-
-            $this->view = $this->view . $this->load->view('requests/req_head', $data = array('length' => $config['total_rows']), true);
+            $boss = ($this->me->type == 1)? true : false;
+            $this->view = $this->view . $this->load->view('requests/req_head', $data = array('length' => $config['total_rows'], 'boss' => $boss), true);
             foreach ($reqs as $req) {
+                if (is_null($req['username'])) {
+                    $req['username'] = 'NoName' . $req['manager'];
+                }
+                $req['subject'] = (strlen($req['subject']) > 100) ? substr($req['subject'],0,100) : $req['subject'];
+                $req['created'] = date('Y-m-d', strtotime($req['created']));
                 $this->view = $this->view . $this->load->view('requests/req_unit', $data = $req, true);
             }
             $this->view = $this->view . $this->load->view('requests/req_foot', $data = array('length' => $config['total_rows'], 'pagination' => $this->pagination->create_links()), true);
