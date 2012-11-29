@@ -54,7 +54,7 @@ Class Req extends CI_Controller
         }
 
         // Komentaro atnaujinimas
-        $this->form_validation->set_rules('comment', 'Komentaras', 'trim|max_length[2000]|xss_clean');
+        $this->form_validation->set_rules('comment', 'Komentaras', 'trim|required|max_length[2000]|xss_clean');
         if ($this->form_validation->run()) {
             $data = array(
                 'comment' => $this->input->post('comment')
@@ -72,8 +72,8 @@ Class Req extends CI_Controller
         $data = get_object_vars($this->request);
         $data['mId'] = $this->tank_auth->get_user_id();
         //@TODO Sutaisyti fixManagers
-        //$managers = $this->tank_auth->allUsers();
-        //$data['managers'] = $this->fixManagers($managers);
+        $managers = $this->tank_auth->allUsers();
+        $data['managers'] = $this->fixManagers($managers);
         $data['message'] = $message;
         $this->view = $this->view . $this->load->view('request/show', $data, true);
         if ($this->tank_auth->getUserType() == 2) {
@@ -99,26 +99,23 @@ Class Req extends CI_Controller
         }
     }
 
-    /**
-     * Funkcija užkomentuota, kol nesutvarkytas fixManager.
-     *
-    public function reassign($reqId=null)
+    public function reassign($reqId = null)
     {
-    $data = $this->isReq($reqId);
-    if (!is_null($data)) {
-    if ($this->reqM->getState($reqId) > 0 && $this->reqM->getManager($reqId) == $this->tank_auth->get_user_id()) {
-    $data = array(
-    'manager'=>$this->input->post('nextManager')
-    );
-    $this->reqM->setRequest($reqId, $data);
-    //@TODO nors čia ir dropdown menu, tačiau jam taip pat reiktų validation.
-    $this->show($reqId, "reassigned");
+        if ($this->isReq($reqId)) {
+            if ($this->request->state > 0 && $this->request->manager == $this->me->id) {
+                $this->form_validation->set_rules('nextManager', 'Manager', 'trim|numeric|xss_clean');
+                if ($this->form_validation->run()) {
+                    $data = array(
+                        'manager' => $this->input->post('nextManager')
+                    );
+                    $this->reqM->setRequest($reqId, $data);
+                }
+                $this->show($reqId, "reassigned");
+            } else {
+                $this->show($reqId, "not-yours");
+            }
+        }
     }
-    else {
-    $this->show($reqId,"not-yours");
-    }
-    }
-    }*/
 
     public function spam($reqId = null)
     {
@@ -171,20 +168,19 @@ Class Req extends CI_Controller
         }
     }
 
-    /**
-     * $managers = array(
-     *    'id'  => 'username',
-     *    'id'  => 'username'
-     * );
-     */
     private function fixManagers($old)
     {
-        foreach ($old as $key => $value) {
-            $new = array_shift($value);
-
-            $newarray[$new] = $value;
+        $newarray = array();
+        foreach ($old as $value) {
+            foreach ($value as $key => $val) {
+                if ($key == 'id') {
+                    $nid = $val;
+                } else {
+                    $nname = $val;
+                }
+            }
+            $newarray[$nid] = $nname;
         }
-        //var_dump($newarray);
         return $newarray;
     }
 

@@ -1,11 +1,5 @@
 <?php
 
-$managers = array(
-    '' => '',
-    '1' => 'Jonas P',
-    '2' => 'Petras J'
-);
-
 $commentD = array(
     'name'	=> 'comment',
     'id'	=> 'comment',
