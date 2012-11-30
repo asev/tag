@@ -62,6 +62,6 @@ CREATE TABLE IF NOT EXISTS `items`(
 	`itemPrice` float(7,2) NOT NULL,
 	`itemQuantity` int(8) NOT NULL DEFAULT 0,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
-	PRIMARY KEY(`itemId`)
+	CONSTRAINT `order_item` PRIMARY KEY (`itemId`,`orderId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
 	
