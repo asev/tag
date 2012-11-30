@@ -7,8 +7,8 @@
 | These details are used in emails sent by authentication library.
 |--------------------------------------------------------------------------
 */
-$config['website_name'] = 'Your project';
-$config['webmaster_email'] = 'webmaster@your-site.com';
+$config['website_name'] = 'TAG';
+$config['webmaster_email'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ $config['allow_registration'] = TRUE;
 $config['captcha_registration'] = FALSE;
 $config['email_activation'] = FALSE;
 $config['email_activation_expire'] = 60*60*24*2;
-$config['email_account_details'] = TRUE;
+$config['email_account_details'] = FALSE;
 $config['use_username'] = FALSE;
 
 $config['username_min_length'] = 4;

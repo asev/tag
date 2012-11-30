@@ -1,13 +1,15 @@
-<?php //@TODO Gražus 404 puslapis su tekstuku
+<?php
 
 $messages = array(
-    'not-found' => "Užklausa nerasta",
-    'denied' => "Užklausa nepasiekima",
-    'no-last' => "Nera neatsakytu užklausų",
-    'not-defined' => "Nenurodyta užklausa",
-    'wrong-page' => "Blogai nurodytas puslapis",
-    'no-results' => "Tuščia. Nėra užklausų"
+    'not-found' => "Ši užklausa neegzistuoja.",
+    'denied' => "Užklausa šiuo metu nepasiekiama. Tikriausiai prieš ją yra kitų neatsakytų užklausų.<br>Pabandykite peržiūrėti " . anchor('req/show/last', 'naujausią užklausą') . ".",
+    'no-last' => "Nera laukiančių užklausų.",
+    'not-defined' => "Atsiprašome. Nenurodėte užklausos arba įvyko klaida.",
+    'no-results' => "Neradome užklausų pagal jūsų nurodytus kriterijus.",
+    'no-client' => "Nenurodytas kliento el. pašto adresas pagal kurį norite ieškoti užklausų.",
+    '404' => 'Puslapis kurį bandote pasiekti neegzisutoja.'
 );
-
-echo "<h1>404</h1>";
-echo $messages[$message];
+?>
+<div class="not-found">
+<?php echo $messages[$message]; ?>
+</div>

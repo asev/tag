@@ -56,6 +56,28 @@ Class Reqs extends CI_Controller
         $this->show($match, 'search');
     }
 
+    public function client() {
+        $this->auth();
+        $this->form_validation->set_rules('email', 'El. paštas', 'trim|required|xss_clean');
+        if ($this->session->flashdata('client')) {
+            $client = $this->session->flashdata('client');
+        } else {
+            if ($this->form_validation->run()) {
+                $client = $this->input->post('email');
+            }
+        }
+        if (isset($client)) {
+            $cond = array(
+                'request.email' => $client
+            );
+            $this->show($cond, 'client');
+            $this->session->set_flashdata('client',$client);
+        } else {
+            $this->view = $this->view . $this->load->view('notfound', array('message' => "no-client"), true);
+            $this->displayer->DisplayView($this->view);
+        }
+    }
+
     private function auth() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('');
@@ -111,7 +133,7 @@ Class Reqs extends CI_Controller
             } else {
                 $reqs = array();
             }
-            $boss = ($this->me->type == 1)? true : false;
+            $boss = ($this->me->type == 1 || $func == 'client')? true : false;
             $this->view = $this->view . $this->load->view('requests/req_head', $data = array('length' => $config['total_rows'], 'boss' => $boss), true);
             foreach ($reqs as $req) {
                 if (is_null($req['username'])) {
@@ -125,7 +147,7 @@ Class Reqs extends CI_Controller
         } else if ($currentPage == 1) {
             $this->view = $this->view . $this->load->view('notfound', array('message' => "no-results"), true);
         } else {
-            $this->view = $this->view . $this->load->view('notfound', array('message' => "wrong-page"), true);
+            redirect($config['base_url']);
         }
         $this->displayer->DisplayView($this->view);
     }

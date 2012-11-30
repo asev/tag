@@ -11,7 +11,6 @@ class Main extends CI_Controller {
         $this->load->model('request_model', "reqM");
         $this->username = $this->tank_auth->getUser()->username;
         if ($this->tank_auth->is_logged_in()) {
-            $this->load->library('form_validation');
             $this->form_validation->set_rules('search', 'Search', 'trim|required|max_length[60]|xss_clean');
             if ($this->form_validation->run()) {
                 redirect('reqs/search/'. $this->input->post('search'));
@@ -67,12 +66,35 @@ class Main extends CI_Controller {
             $this->typeRedirect($this->checkType());
         } else {
             $data = array();
+            $this->personalManager(1);
             $this->view = $this->view . $this->load->view('main/manager', $data, true);
             $this->displayer->DisplayView($this->view);
         }
     }
 
+    public function _404() {
+        $this->view = $this->view . $this->load->view('notfound', array('message' => "404"), true);
+        $this->displayer->DisplayView($this->view);
+    }
 
+    private function personalManager($manager) {
+        $current = $this->reqM->statManagerCount(array('state' => 1, 'manager' => $manager));
+        $data['current'] = $current['0']['count'];
+        $titles = array('Iš viso', 'Šiemet', 'Šį mėnesį', 'Šiandien');
+        for ($term = 3; $term >= 0; $term--) {
+            $c = $this->condByTerm($term);
+            $assigned = $this->reqM->statManagerCount(array_merge($c['assignCond'], array('manager' => $manager)));
+            $succeed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 2, 'manager' => $manager)));
+            $failed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 3, 'manager' => $manager)));
+            $data['stats'][$term] = array(
+                'title' => $titles[$term],
+                'assign' => $assigned['0']['count'],
+                'success' => $succeed['0']['count'],
+                'fail' => $failed['0']['count']
+            );
+        }
+        $this->view = $this->view . $this->load->view('main/personal_manager', $data, true);
+    }
 
     private function checkType() {
         if ($this->tank_auth->is_logged_in()) {
@@ -102,7 +124,7 @@ class Main extends CI_Controller {
         $assigned = $this->reqM->statManagerNames($c['assignCond']);
         $succeed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 2)));
         $failed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 3)));
-        $current_requests = $this->reqM->statmanagerCount(array('state' => 1));
+        $current_requests = $this->reqM->statManagerCount(array('state' => 1));
 
         // Duomenys sudedami į gražų masyvą.
         foreach($assigned as $a) {
@@ -150,7 +172,7 @@ class Main extends CI_Controller {
 
 
     private function condByTerm($term) {
-        $c['assignCond'] = null;
+        $c['assignCond'] = array();
         $c['complCond'] = array();
         $c['creatCond'] = array();
 

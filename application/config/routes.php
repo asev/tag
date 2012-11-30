@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "main";
-$route['404_override'] = '';
+$route['404_override'] = 'main/_404';
 $route['user/(:num)'] = "user/selectUser/$1";
 
 

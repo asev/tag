@@ -10,7 +10,6 @@ Class Req extends CI_Controller
     public function Req()
     {
         parent::__construct();
-        $this->load->library('form_validation');
         $this->load->model('request_model', 'reqM');
         $this->load->model('order_model', 'orderM');
     }
@@ -50,6 +49,8 @@ Class Req extends CI_Controller
                 redirect('req/show/' . $reqId);
             } else {
                 $this->view = $this->view . $this->load->view('notfound', array('message' => "no-last"), true);
+                $this->displayer->DisplayView($this->view);
+                return;
             }
         }
 
@@ -73,6 +74,7 @@ Class Req extends CI_Controller
         $data['mId'] = $this->tank_auth->get_user_id();
         $managers = $this->tank_auth->allUsers();
         $data['managers'] = $this->fixManagers($managers);
+        $data['history'] = $this->reqM->getCondCount(array('email' => $this->request->email));
         $data['message'] = $message;
         $this->view = $this->view . $this->load->view('request/show', $data, true);
         $this->view = $this->view . $this->load->view('request/manage', $data, true);

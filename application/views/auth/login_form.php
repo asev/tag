@@ -1,4 +1,4 @@
-<?php
+<?php //@toGin pažiūrėk kaip atrodo (neprisijungus) /index.php/auth ir pataisyk
 $login = array(
 	'name'	=> 'login',
 	'id'	=> 'login',

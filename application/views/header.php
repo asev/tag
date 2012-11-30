@@ -17,8 +17,7 @@ $submit = array(
 <div id="layout">
 <div id="header">
     <div class="tag-logo">
-        <img src="/img/tag_logo.png" alt="logo">
-
+        <?php echo anchor('', '<img src="/img/tag_logo.png" alt="logo">'); ?>
     </div><?php if (!is_null($me)) :?> <p><?php echo $me; ?> |
     <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
     <?php echo $waiting; ?>
@@ -37,6 +36,8 @@ $submit = array(
             echo form_close(); ?>
         </div>
     </div>
-        <?php endif;?>
+        <?php else : ?>
+    <p><?php echo anchor('auth/',"Prisijungti"); ?></p>
+<?php endif;?>
 </div>
     <div id="content">

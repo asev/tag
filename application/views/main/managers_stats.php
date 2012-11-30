@@ -1,9 +1,9 @@
 <?php
-function disp($array, $elmement) {
+function check_element($array, $elmement) {
     if (isset($array[$elmement])) {
-        echo $array[$elmement];
+        return $array[$elmement];
     } else {
-        echo '0';
+        return '0';
     }
 }
 //@toGin Lentelę gražiai atvaizduoti pagal http://tablesorter.com/themes/blue/blue.zip
@@ -33,11 +33,11 @@ function disp($array, $elmement) {
             foreach ($managers as $id => $val) :
                 ?>
                 <tr>
-                    <td><?php disp($val, 'name');?></td>
-                    <td><?php disp($val, 'm_assign');?></td>
-                    <td><?php disp($val, 'm_success');?></td>
-                    <td><?php disp($val, 'm_fail');?></td>
-                    <td><?php disp($val, 'm_req');?></td>
+                    <td><?php echo check_element($val, 'name');?></td>
+                    <td><?php echo check_element($val, 'm_assign');?></td>
+                    <td><?php echo check_element($val, 'm_success');?></td>
+                    <td><?php echo check_element($val, 'm_fail');?></td>
+                    <td><?php echo check_element($val, 'm_req');?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

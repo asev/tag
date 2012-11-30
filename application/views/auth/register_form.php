@@ -1,4 +1,4 @@
-<?php
+<?php //@toGin pažiūrėk kaip atrodo su vadovo accountu per /auth/register ir pataisyk
 if ($use_username) {
 	$username = array(
 		'name'	=> 'username',
@@ -30,11 +30,16 @@ $confirm_password = array(
 	'size'	=> 30,
 );
 $type = array(
+     'name'	=> 'type',
+     'id'	=> 'type',
+ );
+$type2 = array(
     'name'	=> 'type',
-    'id'	=> 'type',
-    'value' => set_value('type'),
-    'maxlength'	=> 2,
-    'size'	=> 30,
+    'value' => 2,
+);
+$type1 = array(
+    'name'	=> 'type',
+    'value' => 1,
 );
 $captcha = array(
 	'name'	=> 'captcha',
@@ -68,7 +73,8 @@ $captcha = array(
 	</tr>
     <tr>
         <td><?php echo form_label('Type', $type['id']); ?></td>
-        <td><?php echo form_input($type); ?></td>
+        <td><?php echo form_radio($type2); ?> Vadybininkas<br>
+        <?php echo form_radio($type1); ?> Vadovas</td>
         <td style="color: red;"><?php echo form_error($type['name']); ?></td>
     </tr>
 
