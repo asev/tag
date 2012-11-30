@@ -40,3 +40,4 @@ $submit = array(
 <?php endif;?>
 </div>
     <div id="content">
+        <p></p>
