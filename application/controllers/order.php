@@ -13,6 +13,7 @@ Class Order extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('order_model', 'orderM');
         $this->load->model('request_model', 'reqM');
+        $this->load->model('item_model', 'itemM');
     }
 
     public function index()
@@ -28,7 +29,11 @@ Class Order extends CI_Controller
             $this->me = $this->tank_auth->get_user_id();
             $this->orderM->addOrder($reqId, $this->me);
             $this->order = $this->orderM->getOrder($reqId, $this->me);
-            $data = get_object_vars($this->order);
+            /*$data = get_object_vars($this->order);*/
+            $orderId = $this->orderM->getOrderId($reqId, $this->me);
+            $data['get_items'] = $this->itemM->getItems($this->orderM->getOrderId($reqId, $this->me));
+            $data = array_merge($data, array('orderId' => $orderId));
+
             $this->view = $this->view . $this->load->view('order/form', $data, true);
         }
         $this->displayer->DisplayView($this->view);

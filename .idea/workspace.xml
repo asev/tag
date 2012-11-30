@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49272e8c-6a81-4a6d-94de-eab9ac59feff" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/item/form.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/order/form.php" afterPath="$PROJECT_DIR$/application/views/order/form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/order.php" afterPath="$PROJECT_DIR$/application/controllers/order.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/order_model.php" afterPath="$PROJECT_DIR$/application/models/order_model.php" />
     </list>
     <ignored path="nfq-is-tag.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +38,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="form.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/order/form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="6" selection-start="953" selection-end="953" vertical-scroll-proportion="0.8453039">
+            <state line="27" column="6" selection-start="953" selection-end="953" vertical-scroll-proportion="-17.653847">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order_model.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/models/order_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="34" column="33" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.8434622">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/order.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="46" selection-start="386" selection-end="386" vertical-scroll-proportion="-1.9615384">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="req.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/req.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="42" selection-start="1692" selection-end="1692" vertical-scroll-proportion="65.26923">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="request_model.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/models/request_model.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="131" column="9" selection-start="4312" selection-end="4394" vertical-scroll-proportion="-9.153846">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/item.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="69" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-13.538462">
               <folding />
             </state>
           </provider>
@@ -61,12 +106,12 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/lentos.sql" />
-        <option value="$PROJECT_DIR$/application/models/order_model.php" />
         <option value="$PROJECT_DIR$/application/models/item_model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/order.php" />
         <option value="$PROJECT_DIR$/application/controllers/item.php" />
         <option value="$PROJECT_DIR$/application/views/item/form.php" />
         <option value="$PROJECT_DIR$/application/views/order/form.php" />
+        <option value="$PROJECT_DIR$/application/controllers/order.php" />
+        <option value="$PROJECT_DIR$/application/models/order_model.php" />
       </list>
     </option>
   </component>
@@ -171,7 +216,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="order" />
+              <option name="myItemId" value="requests" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -189,11 +234,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nfq-is-tag" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nfq-is-tag" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="item" />
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -207,6 +266,9 @@
   <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
       <method />
     </configuration>
     <list size="0" />
@@ -247,7 +309,11 @@
       <created>1354314743344</created>
       <updated>1354314743344</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Pridėti pirminiai item ir order view'ai">
+      <created>1354314831365</created>
+      <updated>1354314831365</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -309,7 +375,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridėti pirminiai item ir order kontroleriai" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pridėti pirminiai item ir order view'ai" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -325,6 +391,7 @@
     <MESSAGE value="pataisyta items lentelė" />
     <MESSAGE value="Pridėti pirminiai item ir order modeliai" />
     <MESSAGE value="Pridėti pirminiai item ir order kontroleriai" />
+    <MESSAGE value="Pridėti pirminiai item ir order view'ai" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -344,27 +411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/order_model.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="5" selection-start="413" selection-end="413" vertical-scroll-proportion="0.5635359">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/item.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="1" selection-start="2193" selection-end="2193" vertical-scroll-proportion="1.7962264">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/order.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="1" selection-start="995" selection-end="995" vertical-scroll-proportion="1.252302">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/item/form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="6" selection-start="1444" selection-end="1444" vertical-scroll-proportion="-34.653847">
@@ -377,9 +423,74 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/request/form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-1.0662984">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/request/show.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.50754714">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/requests/req_unit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/requests/req_head.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1354235305333" expanded="true" signature="115:131" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/order/form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="6" selection-start="953" selection-end="953" vertical-scroll-proportion="0.8453039">
+        <state line="27" column="6" selection-start="953" selection-end="953" vertical-scroll-proportion="-17.653847">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="69" selection-start="1559" selection-end="1559" vertical-scroll-proportion="-13.538462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/order.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="46" selection-start="386" selection-end="386" vertical-scroll-proportion="-1.9615384">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/request_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="131" column="9" selection-start="4312" selection-end="4394" vertical-scroll-proportion="-9.153846">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/req.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="42" selection-start="1692" selection-end="1692" vertical-scroll-proportion="65.26923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/order_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="33" selection-start="1078" selection-end="1078" vertical-scroll-proportion="0.8434622">
           <folding />
         </state>
       </provider>
