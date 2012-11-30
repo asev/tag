@@ -34,7 +34,7 @@ class Main extends CI_Controller {
 
     public function boss($stats=1, $term=2)
     {
-        if ($this->checkType() != 2) {
+        if ($this->checkType() != 1) {
             $this->typeRedirect($this->checkType());
         } else {
             $data = array();
@@ -79,7 +79,7 @@ class Main extends CI_Controller {
 
     private function personalManager($manager) {
         $current = $this->reqM->statManagerCount(array('state' => 1, 'manager' => $manager));
-        $data['current'] = (isset($current['0']['count'])) ? $current['0']['count'] : 0;
+        $data['current'] = $current['0']['count'];
         $titles = array('Iš viso', 'Šiemet', 'Šį mėnesį', 'Šiandien');
         for ($term = 3; $term >= 0; $term--) {
             $c = $this->condByTerm($term);
@@ -88,9 +88,9 @@ class Main extends CI_Controller {
             $failed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 3, 'manager' => $manager)));
             $data['stats'][$term] = array(
                 'title' => $titles[$term],
-                'assign' => isset($assigned['0']['count']) ? $assigned['0']['count'] : 0,
-                'success' => isset($succeed['0']['count']) ? $succeed['0']['count'] : 0,
-                'fail' => isset($failed['0']['count']) ? $failed['0']['count'] : 0
+                'assign' => $assigned['0']['count'],
+                'success' => $succeed['0']['count'],
+                'fail' => $failed['0']['count']
             );
         }
         $this->view = $this->view . $this->load->view('main/personal_manager', $data, true);

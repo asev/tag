@@ -1,23 +1,41 @@
 <?php
 
+/**
+ *  Užklausų sąrašo klasė. Įvairūs užklausų sąrašai pagal kriterijus.
+ */
 Class Reqs extends CI_Controller
 {
 
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = "";
+    /**
+     * @var null - prisijungusio vartotojo duomenys
+     */
     private $me = null;
 
+    /**
+     *  Konstruktorius
+     */
     public function Reqs()
     {
         parent::__construct();
         $this->load->model('request_model', 'reqM');
     }
 
+    /**
+     *  Jeigu nenurodomi jokie kriterijai, demonstruojamas šiuo metu aptarnaujamų užklausų sąrašas
+     */
     public function index()
     {
         $this->auth();
         redirect('reqs/current');
     }
 
+    /**
+     *  Šiuo metu aptarnaujamų užklausų sąrašas
+     */
     public function current() {
         $this->auth();
         $cond = array(
@@ -30,6 +48,9 @@ Class Reqs extends CI_Controller
         $this->show($cond, 'current');
     }
 
+    /**
+     *  Jau atliktų užklausų sąrašas
+     */
     public function past() {
         $this->auth();
         $cond = array(
@@ -42,6 +63,9 @@ Class Reqs extends CI_Controller
         $this->show($cond, 'past');
     }
 
+    /**
+     *  Sąrašas užklausų kurios pažymėtos kaip šlamštas
+     */
     public function spam() {
         $this->auth();
         $cond = array(
@@ -51,11 +75,20 @@ Class Reqs extends CI_Controller
     }
 
     //@TODO Paieška dabar neveikia, kad duodama užklausa su tarpu. Pvz: "dolor sit". Tą reikia pataisyti
+    /**
+     *  Užklausų sąrašas sudarytas ieškant pagal raktinį žodį
+     *
+     * @param $match - paieškos raktažodis
+     */
     public function search($match) {
         $this->auth();
         $this->show($match, 'search');
     }
 
+    /**
+     *  Užklausų sąrašas atrinktas pagal el. pašto adresą. Skirtas patikrinti ar klientas ir ankčiau buvo pateikęs
+     * užklausą.
+     */
     public function client() {
         $this->auth();
         $this->form_validation->set_rules('email', 'El. paštas', 'trim|required|xss_clean');
@@ -78,6 +111,9 @@ Class Reqs extends CI_Controller
         }
     }
 
+    /**
+     *  Patikrinimas ar vartotojas prisijungęs.
+     */
     private function auth() {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('');
@@ -86,6 +122,12 @@ Class Reqs extends CI_Controller
         }
     }
 
+    /**
+     *  Užklausų sąrašo rodymas pagal nurodytas sąlygas
+     *
+     * @param $cond - sąlygos pagal kurias išrenkamos užklausos
+     * @param $func - sąlygos pavadinimas, reikalingas puslapiavimui
+     */
     private function show($cond, $func)
     {
         $this->load->library('pagination');

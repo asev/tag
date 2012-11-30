@@ -1,12 +1,27 @@
 <?php
 
+/**
+ *  Vienos užklausos klasė. Su užklausa atliekami įterpimo, rodymo ir įvairūs keitimo veiksmai.
+ */
 Class Req extends CI_Controller
 {
 
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = "";
+    /**
+     * @var null - nagrinėjama užklausa
+     */
     private $request = null;
+    /**
+     * @var null - prisijungusio vartotojo duomenys
+     */
     private $me = null;
 
+    /**
+     *  Konstruktorius
+     */
     public function Req()
     {
         parent::__construct();
@@ -14,11 +29,17 @@ Class Req extends CI_Controller
         $this->load->model('order_model', 'orderM');
     }
 
+    /**
+     *  Jeigu nenurodomas veiksmas, peradresuojama į pradinį puslapį.
+     */
     public function index()
     {
         redirect('');
     }
 
+    /**
+     *  Naujos užklausos registravimas
+     */
     public function add()
     {
         if ($this->tank_auth->is_logged_in()) {
@@ -40,6 +61,12 @@ Class Req extends CI_Controller
         $this->displayer->DisplayView($this->view);
     }
 
+    /**
+     *  Konkrečios užklausos atvaizdavimas.
+     *
+     * @param null $reqId - užklausos Id
+     * @param null $message - papildomos žinutės, kuri bus rodoma virš užklausos kodas
+     */
     public function show($reqId = null, $message = null)
     {
         // Jeigu iesko paskutines
@@ -81,6 +108,11 @@ Class Req extends CI_Controller
         $this->displayer->DisplayView($this->view);
     }
 
+    /**
+     *  Užklausos priskirimas prisijungusiam vadybininkui
+     *
+     * @param null $reqId - užklausos Id
+     */
     public function assign($reqId = null)
     {
         if ($this->isReq($reqId)) {
@@ -98,6 +130,11 @@ Class Req extends CI_Controller
         }
     }
 
+    /**
+     *  Užklausos vadybininko pakeitimas, užklausos perleidmas kitam vadybininkui.
+     *
+     * @param null $reqId - užklausos Id
+     */
     public function reassign($reqId = null)
     {
         if ($this->isReq($reqId)) {
@@ -116,6 +153,11 @@ Class Req extends CI_Controller
         }
     }
 
+    /**
+     *  Užklausa pažymima kaip šlamštas.
+     *
+     * @param null $reqId - užklausos Id
+     */
     public function spam($reqId = null)
     {
         if ($this->isReq($reqId, true)) {
@@ -132,6 +174,11 @@ Class Req extends CI_Controller
         }
     }
 
+    /**
+     *  Užklausa pažymima kaip nebe šlamštas
+     *
+     * @param null $reqId - užklausos Id
+     */
     public function unspam($reqId = null)
     {
         if ($this->isReq($reqId, true)) {
@@ -149,6 +196,12 @@ Class Req extends CI_Controller
         }
     }
 
+    /**
+     *  Užklausa pažymima kaip atlikta.
+     *
+     * @param null $reqId - užklausos Id
+     * @param int $state - naujasis užklausos būvis (2 - pasisekusi, 3 - nepasisekusi)
+     */
     public function finish($reqId = null, $state=2)
     {
         if ($this->isReq($reqId, true)) {
@@ -167,6 +220,13 @@ Class Req extends CI_Controller
         }
     }
 
+    /**
+     *  Iš DB gautas vadybininkų masyvas perdaromas į formatą (managerId => managerName), kuris vėliau naudojamas
+     * dropdown formavimui
+     *
+     * @param $old - iš DB gautas masyvas
+     * @return array - pakeistas vadybininkų masyvas
+     */
     private function fixManagers($old)
     {
         $newarray = array();
@@ -183,6 +243,14 @@ Class Req extends CI_Controller
         return $newarray;
     }
 
+    /**
+     *  Tikrina ar vartotojas yra prisijungęs, ar užklausa su kuria norima atlikti veiksmą egzistuoja ir yra prieinama.
+     * Galima tikrinti ar vartotojas turi teisę atilikti veiksmus su šia užklausa.
+     *
+     * @param $reqId - užklausos Id
+     * @param bool $auth - ar reikia tikrinti vartotojo teisę atlikti veiksmus
+     * @return bool - true jeigu užklausa egzistuoja ir yra preinama
+     */
     private function isReq($reqId, $auth = false)
     {
         if (!$this->tank_auth->is_logged_in()) {

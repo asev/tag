@@ -1,19 +1,21 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Sev
- * Date: 12.11.17
- * Time: 18.30
- * To change this template use File | Settings | File Templates.
- */
 
+/**
+ *  Darbo su DB lentele request klasė.
+ */
 class Request_model extends CI_Model {
 
+    /**
+     * @var string - užklausų lentelės pavadinimas
+     */
     private $reqTable = "request";
+    /**
+     * @var string - vartotojo lentelės pavadinimas
+     */
     private $userTable = "users";
 
     /**
-     * Adds new request to database from request-form
+     * Naujos užklausos talpinimas į DB iš request-form
      *
      */
     public function addRequest()
@@ -29,6 +31,12 @@ class Request_model extends CI_Model {
         $this->db->insert($this->reqTable, $data);
     }
 
+    /**
+     *  Skaičuojama kiek yra rezultatų atitinkančių užduotą sąlygą
+     *
+     * @param $conditions - sąlyga pagal kurią skaičuojami rezultatai
+     * @return mixed - rezultatų skaičius
+     */
     public function getCondCount($conditions) {
         $this->db->select('requestId');
         $this->db->from($this->reqTable);
@@ -37,6 +45,14 @@ class Request_model extends CI_Model {
         return $query->num_rows();
     }
 
+    /**
+     *  Gražinamos užklausos pagal užduotą sąlygą.
+     *
+     * @param $conditions - sąlyga
+     * @param int $start - užklausų išrinkimo pradžios vieta
+     * @param int $limit - skaičius kiek užklausų reikia atrinkti
+     * @return mixed - atrinktos užklausos
+     */
     public function getCond($conditions, $start=0, $limit=20) {
         $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
         $this->db->limit($limit, $start);
@@ -47,6 +63,12 @@ class Request_model extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     *  Gražinamas paieškos pagal raktažodį rezultatų skaičius
+     *
+     * @param $match - paieškos raktažodis
+     * @return mixed - rezultatų skaičius
+     */
     public function getSearchCount($match) {
         $this->db->select('requestId');
         $this->db->from($this->reqTable);
@@ -58,6 +80,14 @@ class Request_model extends CI_Model {
         return $query->num_rows();
     }
 
+    /**
+     *  Paieška pagal raktažodį
+     *
+     * @param $match - paieškos raktažodis
+     * @param int $start - užklausų išrinkimo pradžios vieta
+     * @param int $limit - skaičius kiek užklausų reikia atrinkti
+     * @return mixed - atriktos užklausos
+     */
     public function getSearch($match, $start, $limit) {
         $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
         $this->db->limit($limit, $start);
@@ -72,9 +102,9 @@ class Request_model extends CI_Model {
     }
 
     /**
-     * Calculate waiting requests
+     *  Skaičiuojama kiek šiuo metu yra nepriskirtų užklausų
      *
-     * @return int - re
+     * @return int - nepriskirtų užklausų skaičius
      */
     public function getWaitingRequestCount()
     {
@@ -85,6 +115,11 @@ class Request_model extends CI_Model {
 
     }
 
+    /**
+     *  Gražinamas Id užklausos kuri jau ilgiausiai laukia aptarnavimo
+     *
+     * @return null - seniausios nepriskirtos užklausos Id
+     */
     public function getLastRequestId()
     {
         $this->db->select('requestId');
@@ -98,6 +133,12 @@ class Request_model extends CI_Model {
         return NULL;
     }
 
+    /**
+     *  Atrenkama viena užklausa pagal Id
+     *
+     * @param $id - užklausos Id
+     * @return null - užklausa pagal Id
+     */
     public function getRequest($id) {
         $this->db->select($this->reqTable .'.*, ' . $this->userTable . '.username');
         $this->db->limit(1);
@@ -109,12 +150,24 @@ class Request_model extends CI_Model {
         return NULL;
     }
 
+    /**
+     *  Užklausos atnaujinimas
+     *
+     * @param $requestId - užklausos Id
+     * @param $data - atnaujinami duomenys
+     */
     public function setRequest($requestId, $data)
     {
         $this->db->where('requestId', $requestId);
         $this->db->update($this->reqTable, $data);
     }
 
+    /**
+     *  Grąžinamas sąlygą atitinkančių užklausų skaičius sugrupuotas pagal vadybininkus ir vadybininko vardas
+     *
+     * @param $cond - atrinkimo sąlyga
+     * @return mixed - sugrupuoti vadybininkų duomenys ir jų vardai
+     */
     public function statManagerNames($cond) {
         $this->db->select($this->userTable . '.username,' . $this->reqTable .'.manager, COUNT(' . $this->reqTable . '.requestId) AS \'count\'');
         $this->db->from($this->reqTable);
@@ -125,6 +178,12 @@ class Request_model extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     *  Grąžinamas sąlygą atitinkančių užklausų skaičius sugrupuotas pagal vadybininkus
+     *
+     * @param $cond - atrinkimo sąlyga
+     * @return mixed - sugrupuoti vadybininkų duomenys
+     */
     public function statManagerCount($cond) {
         $this->db->select($this->reqTable .'.manager, COUNT(' . $this->reqTable . '.requestId) AS \'count\'');
         $this->db->from($this->reqTable);

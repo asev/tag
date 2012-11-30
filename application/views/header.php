@@ -20,14 +20,13 @@ $submit = array(
         <?php echo anchor('', '<img src="/img/tag_logo.png" alt="logo">'); ?>
     </div><?php if (!is_null($me)) :?> <p><?php echo $me; ?> |
     <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
-    <?php echo $waiting; ?>
     <div id="meniu">
         <ul>
         <li class="border"><?php echo anchor('main','Pradžia'); ?></li>
         <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
         <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
         <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
-        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'. ' '.$waiting); ?></li>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia '. ' '.$waiting); ?></li>
         </ul>
         <div class="search">
             <?php echo form_open('main');

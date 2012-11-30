@@ -1,11 +1,21 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ *  Prisijungimų ir vartotojų klasė. Registruojami varotojai ir prisijungiama prie sistemos.
+ *  Čia yra modifikuota Tank_auth biblioteka iš http://konyukhov.com/soft/tank_auth/
+ */
 class Auth extends CI_Controller
 {
 
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = '';
 
-	function __construct()
+    /**
+     *  Konstruktorius
+     */
+    public function Auth()
 	{
 		parent::__construct();
 		$this->load->library('security');
@@ -13,17 +23,18 @@ class Auth extends CI_Controller
 		$this->lang->load('tank_auth');
 	}
 
-	function index()
+    /**
+     *  Jeigu nenurodomas veiksmas, peradresuojama į prisijungimo puslapį.
+     */
+    public function index()
 	{
 			redirect('/auth/login/');
 	}
 
 	/**
-	 * Login user on the site
-	 *
-	 * @return void
+	 *  Prijungia vartotoją prie sistemos	 *
 	 */
-	function login()
+	public function login()
 	{
 		if ($this->tank_auth->is_logged_in()) {									// logged in
 			redirect('');
@@ -94,11 +105,9 @@ class Auth extends CI_Controller
 	}
 
 	/**
-	 * Logout user
-	 *
-	 * @return void
+	 *  Atjungia vartotoją
 	 */
-	function logout()
+	public function logout()
 	{
 		$this->tank_auth->logout();
 
@@ -107,11 +116,9 @@ class Auth extends CI_Controller
 	}
 
 	/**
-	 * Register user on the site
-	 *
-	 * @return void
+	 *  Tikrinama ar registruoja vadovas. Prireigstruojamas naujas vartotojas
 	 */
-	function register()
+	public function register()
 	{
 		if (!$this->tank_auth->is_logged_in()) {									// logged in
 			redirect('');
@@ -177,11 +184,9 @@ class Auth extends CI_Controller
 	}
 
 	/**
-	 * Change user password
-	 *
-	 * @return void
+	 *  Keičiamas vartotojo slaptažodis
 	 */
-	function change_password()
+	public function change_password()
 	{
 		if (!$this->tank_auth->is_logged_in()) {								// not logged in or not activated
 			redirect('/auth/login/');
@@ -210,19 +215,13 @@ class Auth extends CI_Controller
 	}
 
 	/**
-	 * Show info message
+	 *  Į naršyklę išvedama nurodyta žinutė
 	 *
-	 * @param	string
-	 * @return	void
+	 * @param	string - žinutė
 	 */
-	function _show_message($message)
+	public function _show_message($message)
 	{
-	//	$this->session->set_flashdata('message', $message);
-	//	redirect('/auth/');
         $this->view = $this->view . $this->load->view('auth/show_message', array('message' => $message), true);
 	}
 
 }
-
-/* End of file auth.php */
-/* Location: ./application/controllers/auth.php */
