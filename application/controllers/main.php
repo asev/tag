@@ -1,10 +1,23 @@
 <?php
 
+/**
+ *  Pagrindinio puslapio klasė. Neprisijungęs klientas, vadybininkas ir vadovas turi skirtingus puslapius, čia
+ * parenkamas jiems tinkamas puslapis.
+ */
 class Main extends CI_Controller {
 
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = "";
+    /**
+     * @var string - prisijungusio vartotojo vardas.
+     */
     private $username;
 
+    /**
+     *  Konstruktorius
+     */
     public function Main()
     {
         parent::__construct();
@@ -18,11 +31,19 @@ class Main extends CI_Controller {
         }
     }
 
+    /**
+     *  Pagal vartotojo tipą atidaro parenka pagrindinį puslapį.
+     */
     public function index()
     {
         $this->typeRedirect($this->checkType());
     }
 
+
+    /**
+     *  Kliento (neprisijungusio vartotojo puslapis)
+     *  Šiuo metu klientui rodoma tik užklausos registracija
+     */
     public function client()
     {
         if ($this->checkType() != 0) {
@@ -32,9 +53,15 @@ class Main extends CI_Controller {
         }
     }
 
+    /**
+     *  Vadovo pagrindinis puslpais
+     *
+     * @param int $stats - statistikos kurią vadovas nuri peržiūrėti indeksas
+     * @param int $term - laikotarpio kurio statistika rodoma indeksas
+     */
     public function boss($stats=1, $term=2)
     {
-        if ($this->checkType() != 1) {
+        if ($this->checkType() != 2) {
             $this->typeRedirect($this->checkType());
         } else {
             $data = array();
@@ -60,6 +87,9 @@ class Main extends CI_Controller {
         }
     }
 
+    /**
+     *  Vadybininko pagrindinis langas
+     */
     public function manager()
     {
         if ($this->checkType() != 2) {
@@ -72,11 +102,19 @@ class Main extends CI_Controller {
         }
     }
 
+    /**
+     *  404 puslapis
+     */
     public function _404() {
         $this->view = $this->view . $this->load->view('notfound', array('message' => "404"), true);
         $this->displayer->DisplayView($this->view);
     }
 
+    /**
+     *  Asmeninė vadybibko statistika kuri rodoma jam pačiam jo pagrindiniame lange
+     *
+     * @param $manager - id vadybininko kuriuo statistika norima peržiūrėti
+     */
     private function personalManager($manager) {
         $current = $this->reqM->statManagerCount(array('state' => 1, 'manager' => $manager));
         $data['current'] = (isset($current['0']['count'])) ? $current['0']['count'] : 0;
@@ -96,6 +134,11 @@ class Main extends CI_Controller {
         $this->view = $this->view . $this->load->view('main/personal_manager', $data, true);
     }
 
+    /**
+     *  Tikrinamas vartotojo tipas.
+     *
+     * @return int - vartotojo tipas
+     */
     private function checkType() {
         if ($this->tank_auth->is_logged_in()) {
             return $this->tank_auth->getUserType();
@@ -103,6 +146,11 @@ class Main extends CI_Controller {
         else return 0;
     }
 
+    /**
+     *  Pagrindinio puslapio parinkimas pagal vartotojo tipą.
+     *
+     * @param $type - tipas pagal kurį atidaromas pagrindinis puslapis.
+     */
     private function typeRedirect($type) {
         switch ($type) {
             case "0" :
@@ -117,6 +165,12 @@ class Main extends CI_Controller {
         }
     }
 
+    /**
+     *  Visų vadybininkų statistika. Kiek šiuo metu turima užklausų, kiek jų priimta, atlikta ir pan.
+     *
+     * @param $c - sąlygos pagal kurias atrenkama statistika (dažniausiai laikotarpio sąlyga)
+     * @return array|null - duomenų masyvas su spausdinimui paruošta statistika
+     */
     private function statManagers($c) {
         $tableArray = array();
 
@@ -152,6 +206,12 @@ class Main extends CI_Controller {
         return $tableArray;
     }
 
+    /**
+     *  Užklausų statistika pagal laikotarpį. Apskaičiuoja kiek tuo buvo užklausų, kiek iš jų buvo atliktos, kiek pasisekę ir pan.
+     *
+     * @param $c - sąlygos pagal kurias atrenkama statistika (dažniausiai laikotarpio sąlyga)
+     * @return mixed - duomenų masyvas su spausdinimui paruošta statistika
+     */
     private function statReqDate($c) {
         $r['r_new'] = $this->reqM->getCondCount($c['creatCond']);
         $r['r_spam'] = $this->reqM->getCondCount(array_merge($c['creatCond'], array('spam' => 1)));
@@ -160,6 +220,11 @@ class Main extends CI_Controller {
         return $r;
     }
 
+    /**
+     *  Dabartinė informacinės sitemos statistika. Užklausų skaičiai pagal įvairius kriterijus
+     *
+     * @return mixed - duomenų masyvas su spausdinimui paruošta statistika
+     */
     private function statCurrent() {
         $r['c_new'] = $this->reqM->getCondCount(array('state' => 0));
         $r['c_assign'] = $this->reqM->getCondCount(array('state' => 1));
@@ -170,7 +235,12 @@ class Main extends CI_Controller {
     }
 
 
-
+    /**
+     *  Pagal termino indeksą suformuojama sąlyga, kuri vėliau naudojama atrenkant užklausas
+     *
+     * @param $term - termino indeksas
+     * @return mixed - suformuota sąlyga
+     */
     private function condByTerm($term) {
         $c['assignCond'] = array();
         $c['complCond'] = array();
