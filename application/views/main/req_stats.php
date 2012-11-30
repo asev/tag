@@ -1,4 +1,3 @@
-<!--Padaryti gražų datų pasirinkimo vaizdavimą. Sutvarkyti lentelę (taip pat ir current_stats)-->
 <div id="dates" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
      xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <ul>
