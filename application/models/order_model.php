@@ -2,25 +2,22 @@
 
 class Order_model extends CI_Model
 {
+    private $orderTable = "orders";
+    private $userTable = "users";
 
-    public function addOrder()
+    public function addOrder($reqId, $me)
     {
-        $data=array(
-            //@TODO Sudeti order laukelius
-            'fullName'=>$this->input->post('full-name'),
-            'email'=>$this->input->post('email'),
-            'phone'=>$this->input->post('phone'),
-            'reqText'=>$this->input->post('request-text')
+        $data = array(
+            'requestId'=>$reqId,
+            'createDate'=>date("Y-m-d H:i:s"),
+            'managerId'=>$me
         );
-        $this->db->insert('order', $data);
+        $this->db->insert($this->orderTable, $data);
     }
 
-    public function getOrder($id) {
-        $this->db->select('order.*');
-        $this->db->limit(1);
-        $this->db->from('order');
-        $this->db->where('orderId', $id);
-        $query = $this->db->get();
+    public function getOrder($reqId, $me)
+    {
+        $query = $this->db->get_where($this->orderTable, array('managerId' => $me, 'requestId' => $reqId), 1);
         if ($query->num_rows() == 1) return $query->row();
         return NULL;
     }
