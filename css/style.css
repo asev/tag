@@ -135,6 +135,7 @@ h2 {
 #request .subject-date p {
     float: right;
     color: #767676;
+    font-size: 10px;
 }
 
 #request .subject-date h2 {
@@ -155,11 +156,15 @@ h2 {
     display: inline;
 }
 
-#request .client-information input {
+#request .client-information input{
     background: none;
     border: none;
     display: inline;
     color: #4169e1;
+}
+
+#request .client-information{
+    padding: 15px 0px;
 }
 
 #meniu {
@@ -175,13 +180,6 @@ h2 {
 
 #meniu li.border {
     border-right: 1px solid #ffffff;
-}
-
-#meniu li.border-none {
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    background-image: -webkit-linear-gradient(left, #791717 0%, #EA5132 100%);
 }
 
 #meniu ul {
