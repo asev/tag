@@ -27,7 +27,7 @@ $submit = array(
         <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
         <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
         <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
-        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'); ?></li>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia'. ' '.$waiting); ?></li>
         </ul>
         <div class="search">
             <?php echo form_open('main');
