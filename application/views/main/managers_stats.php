@@ -6,8 +6,6 @@ function check_element($array, $elmement) {
         return '0';
     }
 }
-//@toGin Lentelę gražiai atvaizduoti pagal http://tablesorter.com/themes/blue/blue.zip
-//@toGin Padaryti gražų datų pasirinkimo vaizdavimą
 ?>
 <div id="dates">
 <ul>
