@@ -18,8 +18,9 @@ $submit = array(
 <div id="header">
     <div class="tag-logo">
         <?php echo anchor('', '<img src="/img/tag_logo.png" alt="logo">'); ?>
-    </div><?php if (!is_null($me)) :?> <p><?php echo $me; ?> |
+    <?php if (!is_null($me)) :?> <p class="logout"><?php echo $me; ?>
     <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
+            </div>
     <div id="meniu">
         <ul>
         <li class="border"><?php echo anchor('main','Pradžia'); ?></li>

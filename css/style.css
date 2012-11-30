@@ -376,3 +376,15 @@ table#requests-list {
     padding-bottom: 20px;
 }
 
+/* Logout */
+
+p.logout{
+    margin-top: 29px;
+    float: right;
+    margin-right: 10px;
+}
+
+#tag-logo{
+    height: 400px;
+}
+
