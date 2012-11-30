@@ -1,4 +1,3 @@
-<?php //@toGin pataisyti lentelę. Šitai ir req_stats lentelei turėtų tikti tas pats CSS. ?>
 <div id="current-table">
 <table>
     <tr>
