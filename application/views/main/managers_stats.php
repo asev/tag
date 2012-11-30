@@ -9,30 +9,31 @@ function check_element($array, $elmement) {
 //@toGin Lentelę gražiai atvaizduoti pagal http://tablesorter.com/themes/blue/blue.zip
 //@toGin Padaryti gražų datų pasirinkimo vaizdavimą
 ?>
-<div class="dates"><?php
-    echo anchor('main/boss/1/3', "Šiandien");
-    echo anchor('main/boss/1/2', "Šį mėnesį");
-    echo anchor('main/boss/1/1', "Šiais metais");
-    echo anchor('main/boss/1/0', "Visą laiką");
-    ?>
+<div id="dates">
+<ul>
+<li class="border-boss"><?php echo anchor('main/boss/2/3', "Šiandien"); ?></li>
+    <li class="border-boss"><?php echo anchor('main/boss/2/2', "Šį mėnesį"); ?></li>
+    <li class="border-boss"><?php echo anchor('main/boss/2/1', "Šiais metais"); ?></li>
+    <li class="border-non"><?php echo anchor('main/boss/2/0', "Visą laiką"); ?></li>
+    </ul>
 </div>
 <div id="statistic">
 
     <table id="statTable" class="tablesorter">
         <thead>
-        <tr>
-            <th>Vadybininkas</th>
-            <th>Priimta užklausų</th>
-            <th>Sėkmingos užklausos</th>
-            <th>Nesėkmingos užklausos</th>
-            <th>Šiuo metu turi užklausų</th>
+        <tr >
+            <th class="headerSortUp headerSortDown header">Vadybininkas</th>
+            <th class="headerSortUp headerSortDown header">Priimta užklausų</th>
+            <th class="headerSortUp headerSortDown header">Sėkmingos užklausos</th>
+            <th class="headerSortUp headerSortDown header">Nesėkmingos užklausos</th>
+            <th class="headerSortUp headerSortDown header">Šiuo metu turi užklausų</th>
         </tr>
         </thead>
         <tbody>
         <?php
             foreach ($managers as $id => $val) :
                 ?>
-                <tr>
+                <tr class="odd header">
                     <td><?php echo check_element($val, 'name');?></td>
                     <td><?php echo check_element($val, 'm_assign');?></td>
                     <td><?php echo check_element($val, 'm_success');?></td>

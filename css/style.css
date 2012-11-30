@@ -1,4 +1,5 @@
 @import "reset.css";
+@import "table-style.css";
 
 /* CSS */
 body {
@@ -332,3 +333,46 @@ table#requests-list {
     padding: 10px;
     font-style: italic;
 }
+
+/* boss meniu */
+
+#boss-meniu ul li, #dates ul li{
+    display: inline;
+}
+
+#boss-meniu, #dates{
+    padding-bottom: 20px;
+}
+
+#boss-meniu li.border-boss, #dates li.border-boss{
+    border-right: solid 1px #d0553d;
+    padding: 2px 12px 2px 12px;
+}
+
+#boss-meniu li.border-non, #dates li.border-non{
+    padding-left: 12px;
+    padding-left: 12px;
+}
+
+/* Dabartinė charakteristika, Užklausų statistika lentelės */
+
+#current-table th.padding, #req-table th.padding, #req-table2 th.padding{
+    padding-right: 20px;
+    padding-left: 5px;
+    text-align: left;
+}
+
+#current-table td.padding-td, #req-table td.padding-td, #req-table2 td.padding-td{
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
+}
+
+#current-table, #req-table, #req-table2{
+    padding-left: 12px;
+}
+
+#req-table{
+    padding-bottom: 20px;
+}
+

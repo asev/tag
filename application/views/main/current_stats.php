@@ -1,23 +1,25 @@
 <?php //@toGin pataisyti lentelę. Šitai ir req_stats lentelei turėtų tikti tas pats CSS. ?>
+<div id="current-table">
 <table>
     <tr>
-        <th>Naujos užklausos</th>
-        <td><?php echo $current['c_new']; ?></td>
+        <th class="padding">Naujos užklausos</th>
+        <td class="padding-td"><?php echo $current['c_new']; ?></td>
     </tr>
     <tr>
-        <th>Priskirtos užklausos</th>
-        <td><?php echo $current['c_assign']; ?></td>
+        <th class="padding">Priskirtos užklausos</th>
+        <td class="padding-td"><?php echo $current['c_assign']; ?></td>
     </tr>
     <tr>
-        <th>Sėkmingos užklauoss</th>
-        <td><?php echo $current['c_success']; ?></td>
+        <th class="padding">Sėkmingos užklauoss</th>
+        <td class="padding-td"><?php echo $current['c_success']; ?></td>
     </tr>
     <tr>
-        <th>Nesėkmingos užklausos</th>
-        <td><?php echo $current['c_fail']; ?></td>
+        <th class="padding">Nesėkmingos užklausos</th>
+        <td class="padding-td"><?php echo $current['c_fail']; ?></td>
     </tr>
     <tr>
-        <th>Šlamšto užklausos</th>
-        <td><?php echo $current['c_spam']; ?></td>
+        <th class="padding">Šlamšto užklausos</th>
+        <td class="padding-td"><?php echo $current['c_spam']; ?></td>
     </tr>
 </table>
+</div>
