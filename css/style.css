@@ -73,11 +73,10 @@ h5 {
 #header {
     padding: 10px 0 0 0;
     position: relative;
-    margin-bottom: 30px;
 }
 
 #content {
-    padding-bottom: 50px;
+    padding: 10px 12px;
 }
 
 #header h1 {
@@ -91,7 +90,6 @@ h5 {
     margin: 0 auto;
     height: 450px;
     display: block;
-    padding-top: 16px;
 }
 
 #request-form .flabel {
@@ -102,11 +100,20 @@ h5 {
     cursor: auto;
 }
 
+#request-form textarea{
+    font-family: arial;
+}
+
 #footer {
-    margin: -5px 0 10px 0px;
-    width: 100%;
-    color: #AAA;
-    border-top: 1px solid #DADADA;
+    padding: 10px 0 10px 0px; margin-left: 15px;
+    color: #aaaaaa;
+    border-top: 1px solid #dadada;
+
+}
+
+#footer p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 #request table, td, tr {
@@ -304,12 +311,8 @@ table#requests-list {
     background: #eee;
 }
 
-#requests-list .status.color1 {
-    background: #ffffbb;
-}
-
 #requests-list .status.color2 {
-    background: #ddffdd;
+    background: #ffdddd;
 }
 
 #requests-list .status.color3 {
@@ -326,12 +329,14 @@ table#requests-list {
 }
 
 .not-found {
-    width: 730px;
-    margin: 5px 20px;
-    background: #ffdddd;
-    border: solid 3px #ffaaaa;
+    width: 700px;
+    margin: 5px 28px;
+    background: white;
+    border: solid 1px #E64729;
     padding: 10px;
     font-style: italic;
+    font-weight: bold;
+    text-align: center;
 }
 
 /* boss meniu */
@@ -384,7 +389,99 @@ p.logout{
     margin-right: 10px;
 }
 
-#tag-logo{
-    height: 400px;
+.tag-logo{
+    height: 75px;
+    display: inline;
 }
+
+/* Log in forma */
+
+#log-in{
+    padding: 20px;
+}
+
+#log-in input[type="submit"]{
+    margin: 14px 0px;
+    padding: 2px 5px;
+}
+
+#log-in .display a{
+    margin-left: 5px;
+}
+
+#log-in td.display{
+    padding: 5px 5px;
+}
+
+input[type="text"], input[type="password"]{
+    margin: 5px 5px;
+}
+
+#log-in label[for="login"]{
+    padding: 5px 5px;
+}
+
+p.login{
+    float: right;
+    padding: 30px;
+}
+
+/* register form */
+
+#register-form label[for="email"], label[for="password"], label[for="confirm_password"], label[for="type"]{
+    padding: 8px 8px;
+}
+
+#register-form input[type="submit"]{
+    margin: 25px 0px;
+}
+
+#register-form{
+    margin: 25px 10px;
+}
+
+#register-form tr .border-none{
+    border-right: none;
+}
+
+/* personal-manager */
+
+#personal-manager th{
+  padding: 5px 10px;
+}
+
+#personal-manager tr.status{
+    text-align: center;
+    border-left: none;
+    border-right: none;
+}
+
+td.border-none{
+    border: none;
+}
+
+#personal-manager tr{
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
+#personal-manager tr:hover td, tr.status:hover th{
+    color: black;
+    background: #E74E2F;
+}
+
+#personal-manager tr .bold{
+    font-weight: bold;
+}
+
+#personal-manager{
+    margin: 32px 0px;
+}
+
+
+
+
+
+
 

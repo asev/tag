@@ -48,6 +48,7 @@ $captcha = array(
 );
 ?>
 <?php echo form_open($this->uri->uri_string()); ?>
+<div id="register-form">
 <table>
 	<?php if ($use_username) { ?>
 	<tr>
@@ -73,14 +74,13 @@ $captcha = array(
 	</tr>
     <tr>
         <td><?php echo form_label('Type', $type['id']); ?></td>
-        <td><?php echo form_radio($type2); ?> Vadybininkas<br>
-        <?php echo form_radio($type1); ?> Vadovas</td>
+        <td><?php echo form_radio($type2); ?> Vadybininkas</td>
         <td style="color: red;"><?php echo form_error($type['name']); ?></td>
     </tr>
 
 	<?php if ($captcha_registration) {
 		if ($use_recaptcha) { ?>
-	<tr>
+	<tr class="border-none">
 		<td colspan="2">
 			<div id="recaptcha_image"></div>
 		</td>
@@ -100,7 +100,7 @@ $captcha = array(
 		<?php echo $recaptcha_html; ?>
 	</tr>
 	<?php } else { ?>
-	<tr>
+	<tr class="border-none">
 		<td colspan="3">
 			<p>Enter the code exactly as it appears:</p>
 			<?php echo $captcha_html; ?>
@@ -116,3 +116,4 @@ $captcha = array(
 </table>
 <?php echo form_submit('register', 'Register'); ?>
 <?php echo form_close(); ?>
+</div>

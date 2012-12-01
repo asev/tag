@@ -73,3 +73,12 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: white;
 }
+
+.tablesorter tr{
+    border-left: none;
+    border-right: none;
+}
+
+.tablesorter thead tr{
+    border-top: none;
+}

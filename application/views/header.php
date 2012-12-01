@@ -36,9 +36,11 @@ $submit = array(
             echo form_close(); ?>
         </div>
     </div>
+        <div class="tag-logo">
         <?php else : ?>
-    <p><?php echo anchor('auth/',"Prisijungti"); ?></p>
+    <p class="login"><?php echo anchor('auth/',"Prisijungti"); ?></p>
 <?php endif;?>
+        </div>
 </div>
     <div id="content">
         <p></p>
