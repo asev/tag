@@ -29,18 +29,6 @@ $confirm_password = array(
 	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
 	'size'	=> 30,
 );
-$type = array(
-     'name'	=> 'type',
-     'id'	=> 'type',
- );
-$type2 = array(
-    'name'	=> 'type',
-    'value' => 2,
-);
-$type1 = array(
-    'name'	=> 'type',
-    'value' => 1,
-);
 $captcha = array(
 	'name'	=> 'captcha',
 	'id'	=> 'captcha',
@@ -71,13 +59,6 @@ $captcha = array(
 		<td><?php echo form_password($confirm_password); ?></td>
 		<td style="color: red;"><?php echo form_error($confirm_password['name']); ?></td>
 	</tr>
-    <tr>
-        <td><?php echo form_label('Type', $type['id']); ?></td>
-        <td><?php echo form_radio($type2); ?> Vadybininkas<br>
-        <?php echo form_radio($type1); ?> Vadovas</td>
-        <td style="color: red;"><?php echo form_error($type['name']); ?></td>
-    </tr>
-
 	<?php if ($captcha_registration) {
 		if ($use_recaptcha) { ?>
 	<tr>
