@@ -413,6 +413,10 @@ p.logout{
     padding: 5px 5px;
 }
 
+#log-in tr.bord{
+    border-right: none;
+}
+
 input[type="text"], input[type="password"]{
     margin: 5px 5px;
 }
