@@ -29,18 +29,6 @@ $confirm_password = array(
 	'maxlength'	=> $this->config->item('password_max_length', 'tank_auth'),
 	'size'	=> 30,
 );
-$type = array(
-     'name'	=> 'type',
-     'id'	=> 'type',
- );
-$type2 = array(
-    'name'	=> 'type',
-    'value' => 2,
-);
-$type1 = array(
-    'name'	=> 'type',
-    'value' => 1,
-);
 $captcha = array(
 	'name'	=> 'captcha',
 	'id'	=> 'captcha',

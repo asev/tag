@@ -159,10 +159,6 @@ class Auth extends CI_Controller
 						$this->form_validation->set_value('email'),
 						$this->form_validation->set_value('password')
                 ))) {									// success
-
-					$data['site_name'] = $this->config->item('website_name', 'tank_auth');
-
-
 				} else {
 					$errors = $this->tank_auth->get_error_message();
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);
