@@ -26,6 +26,13 @@ class Order_model extends CI_Model
         return NULL;
     }
 
+    public function getOrderById($orderId)
+    {
+        $query = $this->db->get_where($this->orderTable, array('orderId' => $orderId), 1);
+        if ($query->num_rows() == 1) return $query->row();
+        return NULL;
+    }
+
     public function getOrderId($reqId, $me)
     {
         $this->db->select('orderId');
@@ -36,4 +43,21 @@ class Order_model extends CI_Model
         if ($query->num_rows() == 1) return $query->row()->orderId;
         return NULL;
     }
+
+    public function setOrder($orderId, $data)
+    {
+        $this->db->where('orderId', $orderId);
+        $this->db->update($this->orderTable, $data);
+    }
+
+    public function checkActive($orderId)
+    {
+        $this->db->select('active');
+        $this->db->from($this->orderTable);
+        $this->db->where('orderId', $orderId);
+        $query = $this->db->get();
+        if ($query->num_rows() == 1) return $query->row()->active;
+        return NULL;
+    }
+
 }

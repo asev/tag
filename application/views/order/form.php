@@ -1,12 +1,9 @@
 <?php
 
-$comment = array(
-    'name'  => 'order-comment',
-    'id'    => 'order-comment',
-    'value' => set_value('order-comment'),
-    'maxlength'	=> 2000,
-
-    'size'	=> 200,
+$commentD = array(
+    'name'	=> 'comment',
+    'id'	=> 'comment',
+    'value' => $comment
 );
 
 ?>
@@ -25,4 +22,19 @@ $comment = array(
     <?php echo '</table>'; ?>
     <?php endif; ?>
     <?php echo anchor('item/add/' . $orderId, 'Pridėti prekę'); ?>
+
+    <br><br>
+
+<?php
+    echo "<p style='margin-bottom: 0;'>Komentaras:</p>";
+    echo form_open();
+    echo form_textarea($commentD);
+    echo form_submit('submit', "Keisti komentarą");
+    echo form_close();
+?>
+
+    <br><br>
+
+    <?php echo anchor('order/finish/' . $orderId, 'Baigti užsakymą'); ?>
+
 </div>
