@@ -43,4 +43,3 @@ $submit = array(
         </div>
 </div>
     <div id="content">
-        <p></p>
