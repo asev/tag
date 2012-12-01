@@ -1,3 +1,3 @@
 <?php
-echo anchor('order/generatePDF/' . $get_order['orderId'], 'Generuoti užsakimą (PDF formatu)');
+echo anchor('order/generatePDF/' . $get_order['orderId'], 'Generuoti užsakymą (PDF formatu)');
 ?>
