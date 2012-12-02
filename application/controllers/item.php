@@ -65,11 +65,8 @@ Class Item extends CI_Controller
         if (!$this->tank_auth->is_logged_in()) {
             redirect('');
         } else {
-            $data['comment'] = $this->orderM->getOrderById($orderId)->comment;
             $this->itemM->deleteItem($orderId, $itemId);
-            $data['get_items'] = $this->itemM->getItems($orderId);
-            $data = array_merge($data, array('orderId' => $orderId));
-            $this->view = $this->view . $this->load->view('order/form', $data, true);
+            redirect('order/add/' . $orderId);
         }
         $this->displayer->DisplayView($this->view);
     }

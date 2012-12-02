@@ -37,12 +37,12 @@ $captcha = array(
 	<tr class="bord">
 		<td><?php echo form_label($login_label, $login['id']); ?></td>
 		<td><?php echo form_input($login); ?></td>
-		<td style="color: red;"><?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?></td>
+		<p><?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?></p>
 	</tr>
 	<tr>
 		<td class="display"><?php echo form_label('Password', $password['id']); ?></td>
 		<td><?php echo form_password($password); ?></td>
-		<td style="color: red;"><?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?></td>
+		<p><?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?></p>
 	</tr>
 
 	<?php if ($show_captcha) {
@@ -63,7 +63,7 @@ $captcha = array(
 			<div class="recaptcha_only_if_audio">Enter the numbers you hear</div>
 		</td>
 		<td><input type="text" id="recaptcha_response_field" name="recaptcha_response_field" /></td>
-		<td style="color: red;"><?php echo form_error('recaptcha_response_field'); ?></td>
+		<p><?php echo form_error('recaptcha_response_field'); ?></p>
 		<?php echo $recaptcha_html; ?>
 	</tr>
 	<?php } else { ?>
@@ -76,7 +76,7 @@ $captcha = array(
 	<tr>
 		<td><?php echo form_label('Confirmation Code', $captcha['id']); ?></td>
 		<td><?php echo form_input($captcha); ?></td>
-		<td style="color: red;"><?php echo form_error($captcha['name']); ?></td>
+		<p><?php echo form_error($captcha['name']); ?></p>
 	</tr>
 	<?php }
 	} ?>
