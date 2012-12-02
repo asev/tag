@@ -353,6 +353,10 @@ table#requests-list {
     padding-bottom: 20px;
 }
 
+#boss-meniu{
+    padding-top: 10px;
+}
+
 #boss-meniu li.border-boss, #dates li.border-boss{
     border-right: solid 1px #d0553d;
     padding: 2px 12px 2px 12px;
@@ -388,9 +392,9 @@ table#requests-list {
 /* Logout */
 
 p.logout{
-    margin-top: 29px;
     float: right;
-    margin-right: 10px;
+    padding-left: 6px;
+    margin-top: 29px;
 }
 
 .tag-logo{
@@ -398,14 +402,15 @@ p.logout{
     display: inline;
 }
 
+
 /* Log in forma */
 
 #log-in{
     padding: 20px;
 }
 
-#log-in input[type="submit"]{
-    margin: 14px 0px;
+#log-in input[type="submit"], #register-form input[type="submit"]{
+    margin: 27px 0px;
     padding: 2px 5px;
 }
 
@@ -417,16 +422,12 @@ p.logout{
     padding: 5px 5px;
 }
 
-#log-in tr.bord{
-    border-right: none;
-}
-
-input[type="text"], input[type="password"]{
+#log-in input[type="text"], input[type="password"]{
     margin: 5px 5px;
 }
 
-#log-in label[for="login"]{
-    padding: 5px 12px;
+label[for="login"]{
+    padding: 8px 12px;
 }
 
 p.login{
@@ -436,12 +437,8 @@ p.login{
 
 /* register form */
 
-#register-form label[for="email"], label[for="password"], label[for="confirm_password"], label[for="type"]{
+label{
     padding: 8px 8px;
-}
-
-#register-form input[type="submit"]{
-    margin: 25px 0px;
 }
 
 #register-form{

@@ -48,9 +48,9 @@ table.tablesorter tbody tr td{
     border-bottom: 1px solid #D0553D;
 }
 table.tablesorter thead tr .header {
-    background-image: url(/img/bg.gif);
+    background-image: url(../img/arrows.png);
     background-repeat: no-repeat;
-    background-position: center right;
+    background-position: right 17px;
     cursor: pointer;
 }
 table.tablesorter tbody td {
@@ -65,10 +65,10 @@ table.tablesorter tbody tr.odd td {
     text-align: center;
 }
 table.tablesorter thead tr .headerSortUp {
-    background-image: url(/img/asc.gif);
+    background-position: right -29px;
 }
 table.tablesorter thead tr .headerSortDown {
-    background-image: url(/img/desc.gif);
+    background-position: right -76px;
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: white;
