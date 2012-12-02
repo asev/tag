@@ -394,6 +394,10 @@ class Tank_auth
 		return FALSE;
 	}
 
+    function usernameById($id) {
+        return $this->ci->users->get_user_by_id($id)->username;
+    }
+
     function getUser()
     {
         $user_id = $this->ci->session->userdata('user_id');

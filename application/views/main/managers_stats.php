@@ -6,13 +6,16 @@ function check_element($array, $elmement) {
         return '0';
     }
 }
+
+$current = array('class' => 'current');
+$notc = array();
 ?>
 <div id="dates">
 <ul>
-<li class="border-boss"><?php echo anchor('main/boss/1/3', "Šiandien"); ?></li>
-    <li class="border-boss"><?php echo anchor('main/boss/1/2', "Šį mėnesį"); ?></li>
-    <li class="border-boss"><?php echo anchor('main/boss/1/1', "Šiais metais"); ?></li>
-    <li class="border-non"><?php echo anchor('main/boss/1/0', "Visą laiką"); ?></li>
+<li class="border-boss"><?php $c = ($term == 3) ? $current : $notc; echo anchor('main/boss/1/3', "Šiandien", $c); ?></li>
+    <li class="border-boss"><?php $c = ($term == 2) ? $current : $notc; echo anchor('main/boss/1/2', "Šį mėnesį", $c); ?></li>
+    <li class="border-boss"><?php $c = ($term == 1) ? $current : $notc; echo anchor('main/boss/1/1', "Šiais metais", $c); ?></li>
+    <li class="border-non"><?php $c = ($term == 0) ? $current : $notc; echo anchor('main/boss/1/0', "Visą laiką", $c); ?></li>
     </ul>
 </div>
 <div id="statistic">

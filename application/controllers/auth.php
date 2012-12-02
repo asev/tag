@@ -115,6 +115,10 @@ class Auth extends CI_Controller
         $this->login();
 	}
 
+
+
+
+
 	/**
 	 *  Tikrinama ar registruoja vadovas. Prireigstruojamas naujas vartotojas
 	 */
@@ -158,7 +162,8 @@ class Auth extends CI_Controller
 						$use_username ? $this->form_validation->set_value('username') : '',
 						$this->form_validation->set_value('email'),
 						$this->form_validation->set_value('password')
-                ))) {									// success
+                ))) {
+                    $this->_show_message($this->lang->line('auth_message_registration_completed_2'));
 				} else {
 					$errors = $this->tank_auth->get_error_message();
 					foreach ($errors as $k => $v)	$data['errors'][$k] = $this->lang->line($v);

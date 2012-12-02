@@ -391,8 +391,8 @@ class Users extends CI_Model
     function allUsers()
     {
         $this->db->select('id, username');
-        $this->db->where('type >', 0);
-        $this->db->order_by('id', "DESC");
+        $this->db->where('type', 2);
+        $this->db->order_by('id', "ASC");
         $query = $this->db->get($this->table_name);
         return $query->result_array();
     }

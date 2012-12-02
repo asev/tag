@@ -65,6 +65,11 @@ h5 {
     clear: both;
 }
 
+.current {
+    color: #a5422f;
+    font-weight: bold;
+}
+
 #layout {
     margin: 0 auto;
     width: 800px;
