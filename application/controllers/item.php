@@ -2,8 +2,14 @@
 
 Class Item extends CI_Controller
 {
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = "";
 
+    /**
+     * Konstruktorius
+     */
     public function Item()
     {
         parent::__construct();
@@ -12,11 +18,19 @@ Class Item extends CI_Controller
         $this->load->model('order_model', 'orderM');
     }
 
+    /**
+     * Jeigu nenurodomas veiksmas, peradresuojama į pradinį puslapį.
+     */
     public function index()
     {
         redirect('');
     }
 
+    /**
+     * Naujos prekės sudarymas
+     *
+     * @param null $orderId - Užsakymo Id
+     */
     public function add($orderId = null)
     {
         if (!$this->tank_auth->is_logged_in()) {
@@ -42,6 +56,12 @@ Class Item extends CI_Controller
         $this->displayer->DisplayView($this->view);
     }
 
+    /**
+     * Prekės pašalinimas
+     *
+     * @param null $orderId - užsakymo Id
+     * @param null $itemId - neunikalus Prekės Id
+     */
     public function delete($orderId = null, $itemId = null)
     {
         if (!$this->tank_auth->is_logged_in()) {

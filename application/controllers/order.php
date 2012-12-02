@@ -3,11 +3,24 @@
 Class Order extends CI_Controller
 {
 
+    /**
+     * @var string - vidinis vaizdas kuris bus atvaizduojamas tarp header ir footer.
+     */
     private $view = "";
+
+    /**
+     * @var null - nagrinėjamas užsakymas
+     */
     private $order = null;
-    private $request = null;
+
+    /**
+     * @var null - prisijungusio vartotojo duomenys
+     */
     private $me = null;
 
+    /**
+     *  Konstruktorius
+     */
     public function order()
     {
         parent::__construct();
@@ -17,19 +30,27 @@ Class Order extends CI_Controller
         $this->load->model('item_model', 'itemM');
     }
 
+    /**
+     * Jeigu nenurodomas veiksmas, peradresuojama į pradinį puslapį.
+     */
     public function index()
     {
         redirect('');
     }
 
+    /**
+     * Naujos prekės sudarymas
+     *
+     * @param null $reqId - Užklausos Id
+     */
     public function add($reqId = null)
     {
         if (!$this->tank_auth->is_logged_in()) {
             redirect('');
         } else {
-            $this->me = $this->tank_auth->get_user_id();
-            $this->orderM->addOrder($reqId, $this->me);
-            $this->order = $this->orderM->getOrder($reqId, $this->me);
+            $this->me = $this->tank_auth->getUser();
+            $this->orderM->addOrder($reqId, $this->me->id);
+            $this->order = $this->orderM->getOrder($reqId, $this->me->id);
             if($this->orderM->checkActive($this->order->orderId) == 1) {
                 $data['get_items'] = $this->itemM->getItems($this->order->orderId);
                 $data = array_merge($data, array('orderId' => $this->order->orderId));
@@ -52,6 +73,11 @@ Class Order extends CI_Controller
 
     }
 
+    /**
+     * Užsakymo pabaigos nustatymas
+     *
+     * @param null $orderId - užsakymo Id
+     */
     public function finish($orderId = null)
     {
         if (!$this->tank_auth->is_logged_in()) {
@@ -68,6 +94,11 @@ Class Order extends CI_Controller
         }
     }
 
+    /**
+     * Ataskaitos PDF formatu generavimas
+     *
+     * @param null $orderId - užsakymo Id
+     */
     public function generatePDF($orderId = null)
     {
         if (!$this->tank_auth->is_logged_in()) {
@@ -75,9 +106,7 @@ Class Order extends CI_Controller
         } else {
             $this->orderM->setOrder($orderId, array('active'=>0));
             $this->order = $this->orderM->getOrderById($orderId);
-            $data['get_order'] = get_object_vars($this->order);
             $data['get_items'] = $this->itemM->getItems($this->order->orderId);
-            $data['get_request'] = $this->reqM->getRequest($this->order->requestId);
 
             $this->load->library('TCPDF');
 
