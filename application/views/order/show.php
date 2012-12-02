@@ -15,4 +15,7 @@
 <?php echo '</tr>'; ?>
 <?php endforeach; ?>
 <?php echo '</table><br/>'; ?>
+<?php echo '<h1 align="center">Papildoma informacija:</h1>'; ?>
+<?php echo '<table cellspacing="0" cellpadding="1" border="1" width=100%>'; ?>
+<?php echo '<tr><td>' . $get_order['comment'] . ' <br/></td></tr></table><br/>'; ?>
 <?php echo anchor('order/generatePDF/' . $get_order['orderId'], 'Parsisiūsti užsakymą PDF formatu'); ?>

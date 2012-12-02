@@ -39,17 +39,17 @@ $itemQuantity = array(
 ?>
 <div id="item-form">
     <?php echo validation_errors(); ?>
-    <?php echo form_open(''); ?>
-    <?php echo '<table cellspacing="0" cellpadding="1" border="1">'; ?>
-    <?php echo '<tr><td>Prekės Id</td><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>'; ?>
+    <?php echo '<table cellspacing="0" cellpadding="1" border="1" width=100%>'; ?>
+    <?php echo '<tr><td align=center>Prekės Id</td><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td></tr>'; ?>
     <?php foreach($get_items as $row): ?>
-    <?php echo '<tr><td>'.$row['itemId'].'</td>'; ?>
-    <?php echo '<td>'.$row['itemName'].'</td>'; ?>
-    <?php echo '<td>'.$row['itemPrice'].'</td>'; ?>
-    <?php echo '<td>'.$row['itemQuantity'].'</td>'; ?>
+    <?php echo '<tr><td align=right>'.$row['itemId'].'</td>'; ?>
+    <?php echo '<td align=right>'.$row['itemName'].'</td>'; ?>
+    <?php echo '<td align=right>'.$row['itemPrice'].'</td>'; ?>
+    <?php echo '<td align=right>'.$row['itemQuantity'].'</td>'; ?>
     <?php echo '</tr>'; ?>
     <?php endforeach; ?>
     <?php echo '</table>'; ?>
+    <?php echo form_open(''); ?>
     <?php echo form_input($itemId); ?>
     <?php echo form_input($itemName); ?>
     <?php echo form_input($itemPrice); ?>

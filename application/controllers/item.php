@@ -29,7 +29,7 @@ Class Item extends CI_Controller
     /**
      * Naujos prekės sudarymas
      *
-     * @param null $orderId - Užsakymo Id
+     * @param null $orderId - užsakymo Id
      */
     public function add($orderId = null)
     {
@@ -41,12 +41,11 @@ Class Item extends CI_Controller
             $this->form_validation->set_rules('item-price', 'Item Price', 'trim|required|numeric|greater_than[0]|min_length[1]|max_length[10]|xss_clean');
             $this->form_validation->set_rules('item-quantity', 'Item Quantity', 'trim|required|is_natural_no_zero|min_length[1]|max_length[8]|xss_clean');
 
-            $data['comment'] = $this->orderM->getOrderById($orderId)->comment;
             if ($this->form_validation->run()) {
                 $this->itemM->addItem($orderId);
                 $data['get_items'] = $this->itemM->getItems($orderId);
                 $data = array_merge($data, array('orderId' => $orderId));
-                $this->view = $this->view . $this->load->view('order/form', $data, true);
+                redirect('order/add/' . $orderId);
             } else {
                 $data['get_items'] = $this->itemM->getItems($orderId);
                 $data['orderId'] = array($orderId);
@@ -57,10 +56,9 @@ Class Item extends CI_Controller
     }
 
     /**
-     * Prekės pašalinimas
+     * Prekės šalinimas
      *
      * @param null $orderId - užsakymo Id
-     * @param null $itemId - neunikalus Prekės Id
      */
     public function delete($orderId = null, $itemId = null)
     {
