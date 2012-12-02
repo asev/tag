@@ -18,8 +18,8 @@ $submit = array(
 <div id="header">
     <div class="tag-logo">
         <?php echo anchor('', '<img src="/img/tag_logo.png" alt="logo">'); ?>
-    <?php if (!is_null($me)) :?> <p class="logout"><?php echo $me; ?>
-    <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
+    <?php if (!is_null($me)) :?><p class="logout"><?php echo $me . ' |'; ?>
+        <?php echo anchor('auth/logout',"Atsijungti"); ?></p>
             </div>
     <div id="meniu">
         <ul>

@@ -20,18 +20,18 @@ function check_element($array, $elmement) {
     <table id="one-column-emphasis" class="tablesorter">
         <thead>
         <tr >
-            <th class="headerSortUp headerSortDown header">Vadybininkas</th>
-            <th class="headerSortUp headerSortDown header">Priimta užklausų</th>
-            <th class="headerSortUp headerSortDown header">Sėkmingos užklausos</th>
-            <th class="headerSortUp headerSortDown header">Nesėkmingos užklausos</th>
-            <th class="headerSortUp headerSortDown header">Šiuo metu turi užklausų</th>
+            <th class="header">Vadybininkas</th>
+            <th class="header">Priimta užklausų</th>
+            <th class="header">Sėkmingos užklausos</th>
+            <th class="header">Nesėkmingos užklausos</th>
+            <th class="header">Šiuo metu turi užklausų</th>
         </tr>
         </thead>
         <tbody>
         <?php
             foreach ($managers as $id => $val) :
                 ?>
-                <tr class="odd header">
+                <tr class="odd">
                     <td class="oce-first"><?php echo check_element($val, 'name');?></td>
                     <td class="oce-first"><?php echo check_element($val, 'm_assign');?></td>
                     <td class="oce-first"><?php echo check_element($val, 'm_success');?></td>
