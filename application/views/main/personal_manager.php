@@ -2,8 +2,9 @@
 ?>
 <h3>Šiuo metu turimos užklausos: <?php echo anchor('reqs/current', $current . ' &raquo;');?></h3>
 
+    <div id="personal-manager">
     <table>
-        <tr>
+        <tr class="bold">
             <th></th>
             <th>Priimta užklausų</th>
             <th>Sėkmingai pasibaigusios</th>
@@ -11,11 +12,12 @@
         </tr>
         <?php
     foreach ($stats as $stat) : ?>
-        <tr>
+        <tr class="status">
             <th><?php echo $stat['title']; ?></th>
-            <td><?php echo $stat['assign']; ?></td>
-            <td><?php echo $stat['success']; ?></td>
-            <td><?php echo $stat['fail']; ?></td>
+            <td class="border-none"><?php echo $stat['assign']; ?></td>
+            <td class="border-none"><?php echo $stat['success']; ?></td>
+            <td class="border-none"><?php echo $stat['fail']; ?></td>
         </tr>
             <?php endforeach; ?>
     </table>
+        </div>
