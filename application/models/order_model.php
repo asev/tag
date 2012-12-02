@@ -23,7 +23,6 @@ class Order_model extends CI_Model
         {
             $data = array(
                 'requestId'=>$reqId,
-                'createDate'=>date("Y-m-d H:i:s"),
                 'managerId'=>$me
             );
             $this->db->insert($this->orderTable, $data);

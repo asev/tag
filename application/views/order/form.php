@@ -13,10 +13,10 @@ $commentD = array(
     <?php echo '<tr><td align=center>Prekės Id</td><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td><td></td></tr>'; ?>
     <?php foreach($get_items as $row): ?>
         <?php echo '<tr><td align=right>'.$row['itemId'].'</td>'; ?>
-        <?php echo '<td align=right>'.$row['itemName'].'</td>'; ?>
+        <?php echo '<td align=right width=55%>'.$row['itemName'].'</td>'; ?>
         <?php echo '<td align=right>'.$row['itemPrice'].'</td>'; ?>
         <?php echo '<td align=right>'.$row['itemQuantity'].'</td>'; ?>
-        <?php echo '<td align=center>'.anchor('item/delete/' . $orderId . '/' . $row['itemId'], 'Ištrinti').'</td>'; ?>
+        <?php echo '<td align=center width=18%>'.anchor('item/delete/' . $orderId . '/' . $row['itemId'], 'Ištrinti').'</td>'; ?>
         <?php echo '</tr>'; ?>
         <?php endforeach; ?>
     <?php echo '</table>'; ?>

@@ -15,7 +15,7 @@ $itemName = array(
     'value' => set_value('item-name'),
     'maxlength'	=> 300,
 
-    'size'	=> 70,
+    'size'	=> 55,
 );
 
 $itemPrice = array(
@@ -30,7 +30,7 @@ $itemPrice = array(
 $itemQuantity = array(
     'name'  => 'item-quantity',
     'id'    => 'item-quantity',
-    'value' => set_value('item-quantity'),
+    'value' => set_value('item-quantity',1),
     'maxlength'	=> 8,
 
     'size'	=> 8,
@@ -39,12 +39,12 @@ $itemQuantity = array(
 ?>
 <div id="item-form">
     <?php echo validation_errors(); ?>
-    <?php echo '<table cellspacing="0" cellpadding="1" border="1" width=100%>'; ?>
+    <?php echo '<table cellspacing="0" cellpadding="1" border="1" width=82%>'; ?>
     <?php echo '<tr><td align=center>Prekės Id</td><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td></tr>'; ?>
     <?php foreach($get_items as $row): ?>
-    <?php echo '<tr><td align=right>'.$row['itemId'].'</td>'; ?>
-    <?php echo '<td align=right>'.$row['itemName'].'</td>'; ?>
-    <?php echo '<td align=right>'.$row['itemPrice'].'</td>'; ?>
+    <?php echo '<tr><td align=right width=15%>'.$row['itemId'].'</td>'; ?>
+    <?php echo '<td align=right width=58%>'.$row['itemName'].'</td>'; ?>
+    <?php echo '<td align=right width=15%>'.$row['itemPrice'].'</td>'; ?>
     <?php echo '<td align=right>'.$row['itemQuantity'].'</td>'; ?>
     <?php echo '</tr>'; ?>
     <?php endforeach; ?>
