@@ -43,9 +43,7 @@ Class Item extends CI_Controller
 
             if ($this->form_validation->run()) {
                 $this->itemM->addItem($orderId);
-                $data['get_items'] = $this->itemM->getItems($orderId);
-                $data = array_merge($data, array('orderId' => $orderId));
-                redirect('order/add/' . $orderId);
+                redirect('order/add/' . $this->orderM->getOrderById($orderId)->requestId);
             } else {
                 $data['get_items'] = $this->itemM->getItems($orderId);
                 $data['orderId'] = array($orderId);
@@ -66,7 +64,7 @@ Class Item extends CI_Controller
             redirect('');
         } else {
             $this->itemM->deleteItem($orderId, $itemId);
-            redirect('order/add/' . $orderId);
+            redirect('order/add/' . $this->orderM->getOrderById($orderId)->requestId);
         }
         $this->displayer->DisplayView($this->view);
     }
