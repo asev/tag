@@ -3,13 +3,13 @@
 class Main extends CI_Controller {
 
     private $view = "";
-    private $username;
+    private $me;
 
     public function Main()
     {
         parent::__construct();
         $this->load->model('request_model', "reqM");
-        $this->username = $this->tank_auth->getUser()->username;
+        $this->me = $this->tank_auth->getUser();
         if ($this->tank_auth->is_logged_in()) {
             $this->form_validation->set_rules('search', 'Search', 'trim|required|max_length[60]|xss_clean');
             if ($this->form_validation->run()) {
@@ -34,27 +34,30 @@ class Main extends CI_Controller {
 
     public function boss($stats=1, $term=2)
     {
-        if ($this->checkType() != 2) {
+        if ($this->checkType() != 1) {
             $this->typeRedirect($this->checkType());
         } else {
-            $data = array();
+            $data = array('stats' => $stats);
             $this->view = $this->view . $this->load->view('main/boss', $data, true);
-
             switch ($stats) {
                 case "1" :
                     $conditions = $this->condByTerm($term);
                     $stat['managers'] = $this->statManagers($conditions);
+                    $stat['term'] = $term;
                     $this->view = $this->view . $this->load->view('main/managers_stats', $stat, true);
                     break;
                 case "2" :
                     $conditions = $this->condByTerm($term);
                     $stat['reqDate'] = $this->statReqDate($conditions);
+                    $stat['term'] = $term;
                     $this->view = $this->view . $this->load->view('main/req_stats', $stat, true);
                     break;
                 case "3" :
                     $stat['current'] = $this->statCurrent();
                     $this->view = $this->view . $this->load->view('main/current_stats', $stat, true);
                     break;
+                default :
+                    $this->view = $this->view . $this->load->view('notfound', array('message' => "404"), true);
             }
             $this->displayer->DisplayView($this->view);
         }
@@ -66,7 +69,7 @@ class Main extends CI_Controller {
             $this->typeRedirect($this->checkType());
         } else {
             $data = array();
-            $this->personalManager(1);
+            $this->personalManager($this->me->id);
             $this->view = $this->view . $this->load->view('main/manager', $data, true);
             $this->displayer->DisplayView($this->view);
         }
@@ -144,7 +147,7 @@ class Main extends CI_Controller {
         if (!is_null($tableArray)) {
             foreach ($tableArray as $id => $a) {
                 if (!isset($a['name'])) {
-                    $tableArray[$id]['name'] = "No Name " . $id;
+                    $tableArray[$id]['name'] = $this->tank_auth->usernameById($id);
                 }
             }
         }

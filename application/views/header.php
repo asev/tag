@@ -3,6 +3,7 @@ $submit = array(
     'name'	=> 'submit',
     'class'	=> 'submit',
 );
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +28,9 @@ $submit = array(
         <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
         <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
         <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
-        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia '. ' '.$waiting); ?></li>
+            <?php if ($waiting > 0) : ?>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia '. ' '.$waiting, array('class' => 'waiting')); ?></li>
+            <?php endif; ?>
         </ul>
         <div class="search">
             <?php echo form_open('main');

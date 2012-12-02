@@ -15,6 +15,13 @@ $email = array(
 	'maxlength'	=> 80,
 	'size'	=> 30,
 );
+$username = array(
+    'name'	=> 'username',
+    'id'	=> 'username',
+    'value'	=> set_value('username'),
+    'maxlength'	=> 80,
+    'size'	=> 30,
+);
 $password = array(
 	'name'	=> 'password',
 	'id'	=> 'password',
@@ -60,11 +67,6 @@ $captcha = array(
 		<td><?php echo form_password($confirm_password); ?></td>
 		<td style="color: red;"><?php echo form_error($confirm_password['name']); ?></td>
 	</tr>
-    <tr>
-        <td><?php echo form_label('Type', $type['id']); ?></td>
-        <td><?php echo form_radio($type2); ?> Vadybininkas</td>
-        <td style="color: red;"><?php echo form_error($type['name']); ?></td>
-    </tr>
 
 	<?php if ($captcha_registration) {
 		if ($use_recaptcha) { ?>

@@ -48,7 +48,7 @@ table.tablesorter tbody tr td{
     border-bottom: 1px solid #D0553D;
 }
 table.tablesorter thead tr .header {
-    background-image: url(../img/arrows.png);
+    background-image: url(../img/arrow.png);
     background-repeat: no-repeat;
     background-position: right 17px;
     cursor: pointer;

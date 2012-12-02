@@ -62,7 +62,7 @@ Class Req extends CI_Controller
     }
 
     /**
-     *  Konkrečios užklausos atvaizdavimas.
+     *  Pasirinktos užklausos atvaizdavimas.
      *
      * @param null $reqId - užklausos Id
      * @param null $message - papildomos žinutės, kuri bus rodoma virš užklausos kodas
