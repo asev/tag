@@ -87,7 +87,7 @@ Class Order extends CI_Controller
             $this->order = $this->orderM->getOrderById($orderId);
             $data['get_order'] = get_object_vars($this->order);
             $data['get_items'] = $this->itemM->getItems($this->order->orderId);
-            $data['get_request'] = $this->reqM->getRequest($this->order->requestId);
+            $data['get_req'] = get_object_vars($this->reqM->getRequest($this->order->requestId));
 
             $this->view = $this->view . $this->load->view('order/show', $data, true);
             $this->displayer->DisplayView($this->view);
@@ -119,14 +119,14 @@ Class Order extends CI_Controller
             $pdf->AddPage();
             $html = '<h1 align="center">Užsakymas Nr. ' . $this->order->orderId . ' parengtas pagal užklasa Nr. ' . $this->order->requestId . ':</h1>';
 
-            $html = $html . '<i>Užsakovo duomenys:</i>';
-            $html = $html . '<p>Vardas: ' . $this->reqM->getRequest($this->order->requestId)->fullName . ',</p>';
-            $html = $html . '<p>Elektroninis paštas: ' . $this->reqM->getRequest($this->order->requestId)->email . ',</p>';
-            $html = $html . '<p>Telefono numeris: ' . $this->reqM->getRequest($this->order->requestId)->phone . ',</p>';
+            $html = $html . '<p>Užsakovo duomenys:</p><br/>';
+            $html = $html . '<i>Vardas: ' . $this->reqM->getRequest($this->order->requestId)->fullName . ',</i><br/>';
+            $html = $html . '<i>Elektroninis paštas: ' . $this->reqM->getRequest($this->order->requestId)->email . ',</i><br/>';
+            $html = $html . '<i>Telefono numeris: ' . $this->reqM->getRequest($this->order->requestId)->phone . ',</i><br/>';
 
-            $html = $html . '<i>Vadybininko duomenys:</i>';
-            $html = $html . '<p>Vardas: ' . $this->tank_auth->getUser()->username . ',</p>';
-            $html = $html . '<p>Elektroninis paštas: ' . $this->tank_auth->getUser()->email . ',</p>';
+            $html = $html . '<p>Vadybininko duomenys:</p><br/>';
+            $html = $html . '<i>Vardas: ' . $this->tank_auth->getUser()->username . ',</i><br/>';
+            $html = $html . '<i>Elektroninis paštas: ' . $this->tank_auth->getUser()->email . ',</i><br/>';
 
             $html = $html . '<h1 align="center">Siulomos prekes:</h1>';
 
@@ -135,7 +135,7 @@ Class Order extends CI_Controller
             {
                 $html = $html . '<tr><td>' . $row['itemId'] . '</td><td>' . $row['itemName'] . '</td><td>' . $row['itemPrice'] . '</td><td>' . $row['itemQuantity'] . '</td></tr>';
             }
-            $html = $html . '</table>';
+            $html = $html . '</table><p></p>';
 
             $html = $html . '<h1 align="center">Papildoma informacija:</h1>';
             $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>' . $this->order->comment . '</td></tr></table>';
