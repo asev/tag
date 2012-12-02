@@ -34,7 +34,9 @@ Class Item extends CI_Controller
                 $data = array_merge($data, array('orderId' => $orderId));
                 $this->view = $this->view . $this->load->view('order/form', $data, true);
             } else {
-                $this->view = $this->view . $this->load->view('item/form', array('orderId' => $orderId), true);
+                $data['get_items'] = $this->itemM->getItems($orderId);
+                $data['orderId'] = array($orderId);
+                $this->view = $this->view . $this->load->view('item/form', $data, true);
             }
         }
         $this->displayer->DisplayView($this->view);
