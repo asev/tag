@@ -311,8 +311,12 @@ table#requests-list {
     background: #eee;
 }
 
+#requests-list .status.color1 {
+    background: #ffffbb;
+}
+
 #requests-list .status.color2 {
-    background: #ffdddd;
+    background: #ddffdd;
 }
 
 #requests-list .status.color3 {
@@ -422,7 +426,7 @@ input[type="text"], input[type="password"]{
 }
 
 #log-in label[for="login"]{
-    padding: 5px 5px;
+    padding: 5px 12px;
 }
 
 p.login{
