@@ -86,7 +86,6 @@ Class Order extends CI_Controller
     {
         if (!$this->tank_auth->is_logged_in() || $this->orderM->getOrderById($orderId)->managerId != $this->tank_auth->get_user_id() ) {
             if($this->orderM->getOrderById($orderId)->active == 0) {
-                /*$this->orderM->setOrder($orderId, array('active'=>0));*/
                 $this->order = $this->orderM->getOrderById($orderId);
                 $data['get_order'] = get_object_vars($this->order);
                 $data['get_items'] = $this->itemM->getItems($this->order->orderId);
