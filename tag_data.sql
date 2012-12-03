@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `orders`(
 INSERT INTO `orders` (`requestId`, `managerId`, `active`, `comment`) VALUES
 (1, 3, 2, 'Nuolaida 10%'),
 (4, 2, 2, 'Nuolaida 20%'),
-(7, 3, )
+(7, 3, 2, ''),
 (11, 4, 2, 'Nemokamas pristatymas'),
 (13, 3, 2, 'Nemokamas pristatymas');
 
