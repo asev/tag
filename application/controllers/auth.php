@@ -47,9 +47,9 @@ class Auth extends CI_Controller
 					$this->config->item('use_username', 'tank_auth'));
 			$data['login_by_email'] = $this->config->item('login_by_email', 'tank_auth');
 
-			$this->form_validation->set_rules('login', 'Login', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-			$this->form_validation->set_rules('remember', 'Remember me', 'integer');
+			$this->form_validation->set_rules('login', 'Prisijungimo vardas', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('password', 'Slaptažodis', 'trim|required|xss_clean');
+			$this->form_validation->set_rules('remember', 'Prisiminti', 'integer');
 
 			// Get login for counting attempts to login
 			if ($this->config->item('login_count_attempts', 'tank_auth') AND
@@ -140,11 +140,11 @@ class Auth extends CI_Controller
             $this->view = $this->view . $this->load->view('main/boss', array('stats' => 4), true);
 			$use_username = $this->config->item('use_username', 'tank_auth');
 			if ($use_username) {
-				$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|alpha_dash');
+				$this->form_validation->set_rules('username', 'Vardas', 'trim|required|xss_clean|min_length['.$this->config->item('username_min_length', 'tank_auth').']|max_length['.$this->config->item('username_max_length', 'tank_auth').']|alpha_dash');
 			}
-			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
-			$this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean|matches[password]');
+			$this->form_validation->set_rules('email', 'El. paštas', 'trim|required|xss_clean|valid_email');
+			$this->form_validation->set_rules('password', 'Slaptažodis', 'trim|required|xss_clean|min_length['.$this->config->item('password_min_length', 'tank_auth').']|max_length['.$this->config->item('password_max_length', 'tank_auth').']|alpha_dash');
+			$this->form_validation->set_rules('confirm_password', 'Patvirtinti slaptažodį', 'trim|required|xss_clean|matches[password]');
 
 			$captcha_registration	= $this->config->item('captcha_registration', 'tank_auth');
 			$use_recaptcha			= $this->config->item('use_recaptcha', 'tank_auth');
