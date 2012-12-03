@@ -30,7 +30,7 @@ $itemPrice = array(
 $itemQuantity = array(
     'name'  => 'item-quantity',
     'id'    => 'item-quantity',
-    'value' => set_value('item-quantity',1),
+    'value' => set_value('item-quantity','1'),
     'maxlength'	=> 8,
 
     'size'	=> 8,

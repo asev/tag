@@ -88,6 +88,7 @@ Class Order extends CI_Controller
             $data['get_order'] = get_object_vars($this->order);
             $data['get_items'] = $this->itemM->getItems($this->order->orderId);
             $data['get_req'] = get_object_vars($this->reqM->getRequest($this->order->requestId));
+            $data['price'] = $this->itemM->getItemsPrice($this->order->orderId);
 
             $this->view = $this->view . $this->load->view('order/show', $data, true);
             $this->displayer->DisplayView($this->view);
@@ -107,6 +108,7 @@ Class Order extends CI_Controller
             $this->orderM->setOrder($orderId, array('active'=>0));
             $this->order = $this->orderM->getOrderById($orderId);
             $data['get_items'] = $this->itemM->getItems($this->order->orderId);
+            $data['price'] = $this->itemM->getItemsPrice($this->order->orderId);
 
             $this->load->library('TCPDF');
 
@@ -118,7 +120,7 @@ Class Order extends CI_Controller
             $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
             $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
             $pdf->AddPage();
-            $html = '<h1 align="center">Užsakymas Nr. ' . $this->order->orderId . ' parengtas pagal užklausą Nr. ' . $this->order->requestId . ':</h1>';
+            $html = '<h1 align="center">' . $this->reqM->getRequest($this->order->requestId)->subject . ':</h1>';
 
             $html = $html . '<p>Užsakovo duomenys:</p><br/>';
             $html = $html . '<i>Vardas: ' . $this->reqM->getRequest($this->order->requestId)->fullName . ',</i><br/>';
@@ -136,8 +138,8 @@ Class Order extends CI_Controller
             {
                 $html = $html . '<tr><td>' . $row['itemId'] . '</td><td>' . $row['itemName'] . '</td><td>' . $row['itemPrice'] . '</td><td>' . $row['itemQuantity'] . '</td></tr>';
             }
-            $html = $html . '</table><p></p>';
-
+            $html = $html . '</table>';
+            $html = $html . '<p></p><p align="right">Viso mokėti: ' . $data['price'] . '</p><p></p>';
             $html = $html . '<h1 align="center">Papildoma informacija:</h1>';
             $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>' . $this->order->comment . '</td></tr></table>';
 
