@@ -28,6 +28,7 @@ $notc = array();
             <th class="header">Sėkmingos užklausos</th>
             <th class="header">Nesėkmingos užklausos</th>
             <th class="header">Šiuo metu turi užklausų</th>
+            <th class="header">Uždirbtos pajamos</th>
         </tr>
         </thead>
         <tbody>
@@ -40,6 +41,7 @@ $notc = array();
                     <td class="oce-first"><?php echo check_element($val, 'm_success');?></td>
                     <td class="oce-first"><?php echo check_element($val, 'm_fail');?></td>
                     <td class="oce-first"><?php echo check_element($val, 'm_req');?></td>
+                    <td class="oce-first"><?php echo check_element($val, 'm_income');?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -47,4 +49,4 @@ $notc = array();
 </div>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.tablesorter.min.js"></script>
-<script type="text/javascript">$(document).ready(function(){$("#one-column-emphasis").tablesorter();});</script>
+<script type="text/javascript">$(document).ready(function(){$("#one-column-emphasis").tablesorter( {sortList: [[5,1], [1,1]]} );});</script>

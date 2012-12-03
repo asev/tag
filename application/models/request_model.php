@@ -192,4 +192,15 @@ class Request_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
     }
+
+    public function managersIncome($cond) {
+        $this->db->select($this->reqTable .'.manager, SUM(items.itemPrice) AS \'count\'');
+        $this->db->from($this->reqTable);
+        $this->db->join('orders', 'orders.requestId = ' . $this->reqTable . '.requestId', 'right');
+        $this->db->join('items', 'items.orderId = ' . 'orders.orderId', 'right');
+        $this->db->where($cond);
+        $this->db->group_by('orders.managerId');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

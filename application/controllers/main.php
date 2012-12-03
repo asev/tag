@@ -128,6 +128,7 @@ class Main extends CI_Controller {
         $succeed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 2)));
         $failed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 3)));
         $current_requests = $this->reqM->statManagerCount(array('state' => 1));
+        $income = $this->reqM->managersIncome(array_merge($c['complCond'], array('state' => 2)));
 
         // Duomenys sudedami į gražų masyvą.
         foreach($assigned as $a) {
@@ -141,6 +142,9 @@ class Main extends CI_Controller {
         }
         foreach($failed as $a) {
             $tableArray[$a['manager']]['m_fail'] = $a['count'];
+        }
+        foreach($income as $a) {
+            $tableArray[$a['manager']]['m_income'] = $a['count'];
         }
 
         // Tiems kurie neturi vardų.
