@@ -1,2 +1,1 @@
-<?php
-echo $message;
+<p class="not-found"><?php echo $message;?></p>

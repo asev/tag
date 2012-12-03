@@ -132,7 +132,7 @@ h5 {
 
 #request {
     float: left;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #request .subject-date p, h2 {
@@ -338,8 +338,8 @@ table#requests-list {
 }
 
 .not-found {
-    width: 700px;
-    margin: 5px 28px;
+    width: 650px;
+    margin: 5px 49px;
     background: white;
     border: solid 1px #E64729;
     padding: 10px;

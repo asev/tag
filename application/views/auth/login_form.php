@@ -11,7 +11,7 @@ if ($login_by_username AND $login_by_email) {
 } else if ($login_by_username) {
 	$login_label = 'Login';
 } else {
-	$login_label = 'Email';
+	$login_label = 'El. paštas';
 }
 $password = array(
 	'name'	=> 'password',
@@ -40,7 +40,7 @@ $captcha = array(
 		<p><?php echo form_error($login['name']); ?><?php echo isset($errors[$login['name']])?$errors[$login['name']]:''; ?></p>
 	</tr>
 	<tr>
-		<td class="display"><?php echo form_label('Password', $password['id']); ?></td>
+		<td class="display"><?php echo form_label('Slaptažodis', $password['id']); ?></td>
 		<td><?php echo form_password($password); ?></td>
 		<p><?php echo form_error($password['name']); ?><?php echo isset($errors[$password['name']])?$errors[$password['name']]:''; ?></p>
 	</tr>
@@ -84,9 +84,7 @@ $captcha = array(
 	<tr>
 		<td colspan="3" class="display">
 			<?php echo form_checkbox($remember); ?>
-			<?php echo form_label('Remember me', $remember['id']); ?>
-			<?php echo anchor('/auth/forgot_password/', 'Forgot password'); ?>
-			<?php if ($this->config->item('allow_registration', 'tank_auth')) echo anchor('/auth/register/', 'Register'); ?>
+			<?php echo form_label('Prisiminti', $remember['id']); ?>
 		</td>
 	</tr>
 </table>
