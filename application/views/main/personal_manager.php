@@ -6,7 +6,7 @@
     <table>
         <tr class="bold">
             <th></th>
-            <th>Priimta užklausų</th>
+            <th>Priimtos užklausos</th>
             <th>Sėkmingai pasibaigusios</th>
             <th>Nesėkmingai pasibaigusios</th>
         </tr>

@@ -25,11 +25,11 @@ $submit = array(
     <div id="meniu">
         <ul>
         <li class="border"><?php echo anchor('main','Pradžia'); ?></li>
-        <li class="border"><?php echo anchor('reqs/current', 'Užklausos'); ?></li>
-        <li class="border"><?php echo anchor('reqs/past','Istorija'); ?></li>
+        <li class="border"><?php echo anchor('reqs/current', 'Aptarnaujamos'); ?></li>
+        <li class="border"><?php echo anchor('reqs/past','Atliktos'); ?></li>
         <li class="border"><?php echo anchor('reqs/spam','Šlamštas'); ?></li>
             <?php if ($waiting > 0) : ?>
-        <li class="border-none"><?php echo anchor('req/show/last', 'Laukia '. ' '.$waiting, array('class' => 'waiting')); ?></li>
+        <li class="border-none"><?php echo anchor('req/show/last', 'Naujos '. ' '.$waiting, array('class' => 'waiting')); ?></li>
             <?php endif; ?>
         </ul>
         <div class="search">
