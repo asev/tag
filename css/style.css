@@ -209,6 +209,17 @@ h2 {
     color: #f2aa7a;
 }
 
+#meniu .waiting {
+    background: #FFD700;
+    padding: 5px 15px;
+    margin-left: -15px;
+    color: #000;
+}
+
+#meniu .waiting:hover {
+    color: inherit;
+}
+
 #meniu .search {
     position: relative;
     float: right;
@@ -447,7 +458,7 @@ label{
 }
 
 #register-form{
-    margin: 25px 10px;
+    margin: 0px 10px;
 }
 
 #register-form tr .border-none{

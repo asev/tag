@@ -1,20 +1,20 @@
 <?php
 
 // Errors
-$lang['auth_incorrect_password'] = 'Incorrect password';
-$lang['auth_incorrect_login'] = 'Incorrect login';
-$lang['auth_incorrect_email_or_username'] = 'Login or email doesn\'t exist';
-$lang['auth_email_in_use'] = 'Email is already used by another user. Please choose another email.';
-$lang['auth_username_in_use'] = 'Username already exists. Please choose another username.';
+$lang['auth_incorrect_password'] = 'Neteisingas slaptažodis';
+$lang['auth_incorrect_login'] = 'Neteisingas prisijungimas';
+$lang['auth_incorrect_email_or_username'] = 'Neegzistuojantys prisijungimo duomenys';
+$lang['auth_email_in_use'] = 'Šis el. pašto adresas jau yra naudojamas. Prašome pasirinkti kitą.';
+$lang['auth_username_in_use'] = 'Šis vardas jau yra naudojamas. Prašome pasirinkti kitą.';
 $lang['auth_current_email'] = 'This is your current email';
 $lang['auth_incorrect_captcha'] = 'Your confirmation code does not match the one in the image.';
 $lang['auth_captcha_expired'] = 'Your confirmation code has expired. Please try again.';
 
 // Notifications
-$lang['auth_message_logged_out'] = 'You have been successfully logged out.';
+$lang['auth_message_logged_out'] = 'Atsijungėte';
 $lang['auth_message_registration_disabled'] = 'Registration is disabled.';
 $lang['auth_message_registration_completed_1'] = 'You have successfully registered. Check your email address to activate your account.';
-$lang['auth_message_registration_completed_2'] = 'You have successfully registered a manager.';
+$lang['auth_message_registration_completed_2'] = 'Vadybininkas sėkmingai užregistruotas';
 $lang['auth_message_activation_email_sent'] = 'A new activation email has been sent to %s. Follow the instructions in the email to activate your account.';
 $lang['auth_message_activation_completed'] = 'Your account has been successfully activated.';
 $lang['auth_message_activation_failed'] = 'The activation code you entered is incorrect or expired.';

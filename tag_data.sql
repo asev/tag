@@ -57,7 +57,7 @@ INSERT INTO `request` (`fullName`, `email`, `phone`, `subject`, `reqText`, `stat
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders`(
 	`orderId` int(11) NOT NULL AUTO_INCREMENT,
-	`requestId` int(11) NOT NULL
+	`requestId` int(11) NOT NULL,
 	`managerId` int(11) NOT NULL,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
 	`comment` VARCHAR(2000) DEFAULT '',
