@@ -124,7 +124,7 @@ class Main extends CI_Controller {
         $tableArray = array();
 
         // Duomenų gavimas iš DB
-        $assigned = $this->reqM->statManagerNames($c['assignCond']);
+        $assigned = $this->reqM->statManagerNames(array_merge($c['assignCond'], array('spam' => 0)));
         $succeed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 2)));
         $failed = $this->reqM->statManagerCount(array_merge($c['complCond'], array('state' => 3)));
         $current_requests = $this->reqM->statManagerCount(array('state' => 1));
@@ -168,7 +168,7 @@ class Main extends CI_Controller {
     }
 
     private function statCurrent() {
-        $r['c_new'] = $this->reqM->getCondCount(array('state' => 0));
+        $r['c_new'] = $this->reqM->getCondCount(array('state' => 0, 'spam' => 0));
         $r['c_assign'] = $this->reqM->getCondCount(array('state' => 1));
         $r['c_success'] = $this->reqM->getCondCount(array('state' => 2));
         $r['c_fail'] = $this->reqM->getCondCount(array('state' => 3));

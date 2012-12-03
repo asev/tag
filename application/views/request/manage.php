@@ -23,9 +23,9 @@ switch ($state) {
         break;
     case "1" :
         if ($manager == $mId) {
-            echo anchor('order/add/' . $requestId, "Sukurti užsakymą"); // Dar nežinau ar tokia nuoroda bus
-            echo anchor('req/finish/' . $requestId . '/2', "Test: Sekminga užklausa");
-            echo anchor('req/finish/' . $requestId .'/3', "Test: Nesekminga užklausa");
+            echo anchor('order/add/' . $requestId, "Užsakymas");
+            echo anchor('req/finish/' . $requestId . '/2', "Pardavimas įvykdytas");
+            echo anchor('req/finish/' . $requestId .'/3', "Pardavimas neįvyko");
             echo form_open('req/reassign/' . $requestId);
             echo form_dropdown('nextManager', $managers);
             echo form_submit('submit', 'Keisti vadybininką');
@@ -35,7 +35,7 @@ switch ($state) {
         }
         break;
     case "2" :
-        echo "Užklausa atlikta sėkmingai. Bendravo " . $username;
+        echo "Užklausa atlikta. Pardavimas įvyko. Bendravo " . $username;
         break;
     case "3" :
         echo "Užklausa atlikta. Pardavimas nepavyko. Bendravo " . $username;
