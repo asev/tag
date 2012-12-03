@@ -2,16 +2,16 @@
 
 $messages = array(
     'success' => "Sėkmingai pakeista užklausos būsena",
-    'already-assigned' => "Užklausa jau priskirta kitam vadybininkui",
-    'already-completed' => "Užklausa jau buvo ivykdyta",
-    'reassigned' => "Sėkmingai pakeitėte užklausos vadybininką",
+    'already-assigned' => "Užklausa priskirta kitam vadybininkui",
+    'already-completed' => "Užklausa įvykdyta",
+    'reassigned' => "Sėkmingai pakeitas užklausos vadybininkas",
     'not-yours' => "Negalima pakeisti vadybininko. Ši užklausa nepriklauso jums.",
-    'spammed' => "Pažymojote kaip  šlamštas.",
-    'unspammed' => "Pažymėta kaip nebe spam",
+    'spammed' => "Pažymėta kaip  šlamštas",
+    'unspammed' => "Pažymėta ne šlamštas",
     'already-spammed' => "Jau buvo pažymėta, kaip šlamstas",
-    'already-unspammed' => "Tai kad ir taip čia nėra šlamštas",
-    'spam' => "Čia šlamštas",
-    'wrong-state' => "Blogai nurodyta būsena."
+    'already-unspammed' => "Jau pažymėta kaip šlamštas",
+    'spam' => "Šlamštas",
+    'wrong-state' => "Blogai nurodyta būsena"
 );
 
 if (is_null($message) && $spam == '1') {
@@ -19,7 +19,7 @@ if (is_null($message) && $spam == '1') {
 }
 
 //rodo zinute
-if (!is_null($message)) { echo "<i>" . $messages[$message] . "</i><br>"; }
+if (!is_null($message)) { echo '<div class="not-found">' . $messages[$message] . '</div>'; }
 ?>
 <div id="request">
     <div class="subject-date">
