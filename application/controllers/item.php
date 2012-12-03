@@ -33,7 +33,7 @@ Class Item extends CI_Controller
      */
     public function add($orderId = null)
     {
-        if (!$this->tank_auth->is_logged_in() || $this->orderM->checkActive($this->order->orderId) == 0) {
+        if (!$this->tank_auth->is_logged_in() || $this->orderM->checkActive($this->orderM->getOrderById($orderId)->orderId) == 0) {
             redirect('');
         } else {
             $this->form_validation->set_rules('item-id', 'Item Id', 'trim|required|is_natural_no_zero|lmin_length[1]|max_length[11]|xss_clean');
@@ -60,7 +60,7 @@ Class Item extends CI_Controller
      */
     public function delete($orderId = null, $itemId = null)
     {
-        if (!$this->tank_auth->is_logged_in() || $this->orderM->checkActive($this->order->orderId) == 0) {
+        if (!$this->tank_auth->is_logged_in() || $this->orderM->checkActive($this->orderM->getOrderById($orderId)->orderId) == 0) {
             redirect('');
         } else {
             $this->itemM->deleteItem($orderId, $itemId);

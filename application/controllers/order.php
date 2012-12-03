@@ -58,7 +58,7 @@ Class Order extends CI_Controller
                 $comment['comment'] = $this->order->comment;
 
                 $this->form_validation->set_rules('comment', 'Komentaras', 'trim|max_length[2000]|xss_clean');
-                if ($this->form_validation->run()) {
+                if ($this->form_validation->run() && $this->orderM->checkActive($this->order->orderId) == 1) {
                     unset($comment['comment']);
                     $comment['comment'] = $this->input->post('comment');
                     $this->orderM->setOrder($this->order->orderId, $comment);
