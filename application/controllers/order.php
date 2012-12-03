@@ -45,8 +45,12 @@ Class Order extends CI_Controller
      */
     public function add($reqId = null)
     {
-        if (!$this->tank_auth->is_logged_in() || $this->reqM->getRequest($reqId)->manager != $this->tank_auth->get_user_id() || $this->reqM->getRequest($reqId)->state == 0) {
-            redirect('');
+        if (!$this->tank_auth->is_logged_in() || $this->reqM->getRequest($reqId)->manager != $this->tank_auth->get_user_id()) {
+            if($this->reqM->getRequest($reqId)->state == 2) {
+                redirect('order/finish/' . $this->orderM->getOrder($reqId, $this->reqM->getRequest($reqId)->manager)->orderId);
+            } else {
+                redirect('');
+            }
         } else {
             $this->me = $this->tank_auth->getUser();
             $this->orderM->addOrder($reqId, $this->me->id);
@@ -80,8 +84,19 @@ Class Order extends CI_Controller
      */
     public function finish($orderId = null)
     {
-        if (!$this->tank_auth->is_logged_in() || $this->orderM->getOrderById($orderId)->managerId != $this->tank_auth->get_user_id() && $this->orderM->getOrderById($orderId)->active != 0) {
-            redirect('');
+        if (!$this->tank_auth->is_logged_in() || $this->orderM->getOrderById($orderId)->managerId != $this->tank_auth->get_user_id() ) {
+            if($this->orderM->getOrderById($orderId)->active == 0) {
+                /*$this->orderM->setOrder($orderId, array('active'=>0));*/
+                $this->order = $this->orderM->getOrderById($orderId);
+                $data['get_order'] = get_object_vars($this->order);
+                $data['get_items'] = $this->itemM->getItems($this->order->orderId);
+                $data['get_req'] = get_object_vars($this->reqM->getRequest($this->order->requestId));
+                $data['price'] = $this->itemM->getItemsPrice($this->order->orderId);
+                $this->view = $this->view . $this->load->view('order/show', $data, true);
+                $this->displayer->DisplayView($this->view);
+            } else {
+                redirect('');
+            }
         } else {
             $this->orderM->setOrder($orderId, array('active'=>0));
             $this->order = $this->orderM->getOrderById($orderId);
@@ -133,10 +148,10 @@ Class Order extends CI_Controller
 
             $html = $html . '<h2 align="center">Prekės:</h2>';
 
-            $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>';
+            $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>Prekės Id</td><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>';
             foreach($data['get_items'] as $row)
             {
-                $html = $html . '<tr><td>' . $row['itemName'] . '</td><td>' . $row['itemPrice'] . '</td><td>' . $row['itemQuantity'] . '</td></tr>';
+                $html = $html . '<tr><td>' . $row['itemId'] . '</td><td>' . $row['itemName'] . '</td><td>' . $row['itemPrice'] . '</td><td>' . $row['itemQuantity'] . '</td></tr>';
             }
             $html = $html . '</table>';
             $html = $html . '<p></p><p align="right">Viso mokėti: ' . $data['price'] . '</p><p></p>';
