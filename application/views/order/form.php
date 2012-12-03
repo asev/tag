@@ -10,9 +10,9 @@ $commentD = array(
 <div id="order-form">
     <?php if(isset($get_items)): ?>
     <?php echo '<table cellspacing="0" cellpadding="1" border="1" width=100%>'; ?>
-    <?php echo '<tr><td align=center>Prekės Id</td><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td><td></td></tr>'; ?>
+    <?php echo '<tr><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td><td></td></tr>'; ?>
     <?php foreach($get_items as $row): ?>
-        <?php echo '<tr><td align=right>'.$row['itemId'].'</td>'; ?>
+        <?php echo '<tr>'; ?>
         <?php echo '<td align=right width=55%>'.$row['itemName'].'</td>'; ?>
         <?php echo '<td align=right>'.$row['itemPrice'].'</td>'; ?>
         <?php echo '<td align=right>'.$row['itemQuantity'].'</td>'; ?>
