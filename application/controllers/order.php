@@ -45,7 +45,7 @@ Class Order extends CI_Controller
      */
     public function add($reqId = null)
     {
-        if (!$this->tank_auth->is_logged_in()) {
+        if (!$this->tank_auth->is_logged_in() || $this->reqM->getRequest($reqId)->manager != $this->tank_auth->get_user_id() || $this->reqM->getRequest($reqId)->state == 0) {
             redirect('');
         } else {
             $this->me = $this->tank_auth->getUser();
@@ -80,7 +80,7 @@ Class Order extends CI_Controller
      */
     public function finish($orderId = null)
     {
-        if (!$this->tank_auth->is_logged_in()) {
+        if (!$this->tank_auth->is_logged_in() || $this->orderM->getOrderById($orderId)->managerId != $this->tank_auth->get_user_id() && $this->orderM->getOrderById($orderId)->active != 0) {
             redirect('');
         } else {
             $this->orderM->setOrder($orderId, array('active'=>0));
