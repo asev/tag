@@ -111,13 +111,14 @@ Class Order extends CI_Controller
             $this->load->library('TCPDF');
 
             $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+            $pdf->SetFont('freesans');
 
             $pdf->SetTitle('TAG_PDF');
 
             $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
             $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
             $pdf->AddPage();
-            $html = '<h1 align="center">Užsakymas Nr. ' . $this->order->orderId . ' parengtas pagal užklasa Nr. ' . $this->order->requestId . ':</h1>';
+            $html = '<h1 align="center">Užsakymas Nr. ' . $this->order->orderId . ' parengtas pagal užklausą Nr. ' . $this->order->requestId . ':</h1>';
 
             $html = $html . '<p>Užsakovo duomenys:</p><br/>';
             $html = $html . '<i>Vardas: ' . $this->reqM->getRequest($this->order->requestId)->fullName . ',</i><br/>';
@@ -128,9 +129,9 @@ Class Order extends CI_Controller
             $html = $html . '<i>Vardas: ' . $this->tank_auth->getUser()->username . ',</i><br/>';
             $html = $html . '<i>Elektroninis paštas: ' . $this->tank_auth->getUser()->email . ',</i><br/>';
 
-            $html = $html . '<h1 align="center">Siulomos prekes:</h1>';
+            $html = $html . '<h1 align="center">Siūlomos prekės:</h1>';
 
-            $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>Prekes Id</td><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>';
+            $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>Prekės Id</td><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>';
             foreach($data['get_items'] as $row)
             {
                 $html = $html . '<tr><td>' . $row['itemId'] . '</td><td>' . $row['itemName'] . '</td><td>' . $row['itemPrice'] . '</td><td>' . $row['itemQuantity'] . '</td></tr>';

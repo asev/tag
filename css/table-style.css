@@ -50,7 +50,7 @@ table.tablesorter tbody tr td{
 table.tablesorter thead tr .header {
     background-image: url(../img/arrow.png);
     background-repeat: no-repeat;
-    background-position: right 17px;
+    background-position: right 27px;
     cursor: pointer;
 }
 table.tablesorter tbody td {
@@ -65,10 +65,10 @@ table.tablesorter tbody tr.odd td {
     text-align: center;
 }
 table.tablesorter thead tr .headerSortUp {
-    background-position: right -29px;
+    background-position: right -20px;
 }
 table.tablesorter thead tr .headerSortDown {
-    background-position: right -76px;
+    background-position: right -67px;
 }
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: white;
