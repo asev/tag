@@ -131,7 +131,7 @@ Class Order extends CI_Controller
             $html = $html . '<i>Vardas: ' . $this->tank_auth->getUser()->username . ',</i><br/>';
             $html = $html . '<i>Elektroninis paštas: ' . $this->tank_auth->getUser()->email . ',</i><br/>';
 
-            $html = $html . '<h1 align="center">Siūlomos prekės:</h1>';
+            $html = $html . '<h2 align="center">Prekės:</h2>';
 
             $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>Prekės Id</td><td>Pavadinimas</td><td>Kaina</td><td>Kiekis</td></tr>';
             foreach($data['get_items'] as $row)
@@ -140,7 +140,7 @@ Class Order extends CI_Controller
             }
             $html = $html . '</table>';
             $html = $html . '<p></p><p align="right">Viso mokėti: ' . $data['price'] . '</p><p></p>';
-            $html = $html . '<h1 align="center">Papildoma informacija:</h1>';
+            $html = $html . '<h2 align="center">Papildoma informacija:</h2>';
             $html = $html . '<table cellspacing="0" cellpadding="1" border="1"><tr><td>' . $this->order->comment . '</td></tr></table>';
 
             $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
