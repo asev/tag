@@ -74,11 +74,11 @@ CREATE TABLE IF NOT EXISTS `orders`(
 --
 
 INSERT INTO `orders` (`requestId`, `managerId`, `active`, `comment`) VALUES
-(1, 3, 2, 'Nuolaida 10%'),
-(4, 2, 2, 'Nuolaida 20%'),
-(7, 3, )
-(11, 4, 2, 'Nemokamas pristatymas'),
-(13, 3, 2, 'Nemokamas pristatymas');
+(1, 3, 0, 'Nuolaida 10%'),
+(4, 2, 0, 'Nuolaida 20%'),
+(7, 3, 1, ''),
+(11, 4, 0, 'Nemokamas pristatymas'),
+(13, 3, 0, 'Nemokamas pristatymas');
 
 --
 -- Table structure for table `items`
@@ -86,21 +86,21 @@ INSERT INTO `orders` (`requestId`, `managerId`, `active`, `comment`) VALUES
 
 DROP TABLE IF EXISTS `items`;
 CREATE TABLE IF NOT EXISTS `items`(
-	`itemId` int(11) NOT NULL,
+	`itemId` int(11) NOT NULL AUTO_INCREMENT,
 	`orderId` int(11) NOT NULL,
 	`itemName` VARCHAR(300) NOT NULL,
 	`itemPrice` float(7,2) NOT NULL,
 	`itemQuantity` int(8) NOT NULL DEFAULT 0,
 	`active` tinyint(1) NOT NULL DEFAULT 1,
-	CONSTRAINT `order_item` PRIMARY KEY (`itemId`,`orderId`)
+	PRIMARY KEY (`itemId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ; 
 	
 --
 -- Dump data to `items`
 --
 
-INSERT INTO `items` (`itemId`, `orderId`, `itemName`, `itemPrice`, `itemQuantity`, `active`) VALUES
-(123, 1, 'Indiškas virtuvės baldų komplektas', 21500.99, 1, 1),
-(124, 2, 'Stalai', 90501.95, 90, 1),
-(125, 3, 'Biuro kėdė', 950.85, 1, 1),
-(126, 4, 'Kėdė su ratukais', 452.65, 1, 1);
+INSERT INTO `items` (`orderId`, `itemName`, `itemPrice`, `itemQuantity`, `active`) VALUES
+(1, 'Indiškas virtuvės baldų komplektas', 21500.99, 1, 1),
+(2, 'Stalai', 90501.95, 90, 1),
+(3, 'Biuro kėdė', 950.85, 1, 1),
+(4, 'Kėdė su ratukais', 452.65, 1, 1);

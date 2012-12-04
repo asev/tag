@@ -49,4 +49,21 @@ class Item_model extends CI_Model
     {
         $this->db->delete($this->itemTable, array('orderId' => $orderId, 'itemId' => $itemId));
     }
+
+    /**
+     * Gražina užsakymo prekių kainą
+     *
+     * @param $orderId - Užsakymo id
+     * @return mixed - visų užsakymo prekių kainų suma
+     */
+    public function getItemsPrice($orderId)
+    {
+        $kaina = null;
+        $data = $this->db->get_where($this->itemTable, array('orderId' => $orderId))->result_array();
+        foreach($data as $row)
+        {
+            $kaina = $kaina + $row['itemPrice'] * $row['itemQuantity'];
+        }
+        return $kaina;
+    }
 }
