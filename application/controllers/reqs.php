@@ -141,7 +141,7 @@ Class Reqs extends CI_Controller
             $config['base_url'] = site_url('reqs/'. $func);
             $config['total_rows'] = $this->reqM->getCondCount($cond);
         }
-        $config['per_page'] = 15;
+        $config['per_page'] = 5;
         $config['use_page_numbers'] = TRUE;
         $config['uri_segment'] = $segm;
         $config['full_tag_open'] = '<div id="pagination">';

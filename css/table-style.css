@@ -1,3 +1,7 @@
+#one-column-emphasis td {
+    border: none;
+}
+
 #one-column-emphasis
 {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
@@ -8,9 +12,10 @@
 }
 #one-column-emphasis th
 {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
-    padding: 12px 15px;
+    padding: 13px 21px;
+    vertical-align: middle;
 }
 #one-column-emphasis td
 {

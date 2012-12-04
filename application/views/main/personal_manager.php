@@ -14,9 +14,9 @@
     foreach ($stats as $stat) : ?>
         <tr class="status">
             <th><?php echo $stat['title']; ?></th>
-            <td class="border-none"><?php echo $stat['assign']; ?></td>
-            <td class="border-none"><?php echo $stat['success']; ?></td>
-            <td class="border-none"><?php echo $stat['fail']; ?></td>
+            <td><?php echo $stat['assign']; ?></td>
+            <td><?php echo $stat['success']; ?></td>
+            <td><?php echo $stat['fail']; ?></td>
         </tr>
             <?php endforeach; ?>
     </table>

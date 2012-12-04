@@ -11,7 +11,7 @@ $lang['auth_incorrect_captcha'] = 'Your confirmation code does not match the one
 $lang['auth_captcha_expired'] = 'Your confirmation code has expired. Please try again.';
 
 // Notifications
-$lang['auth_message_logged_out'] = 'Atsijungėte';
+$lang['auth_message_logged_out'] = 'Sėkmingai atsijungėte !';
 $lang['auth_message_registration_disabled'] = 'Registration is disabled.';
 $lang['auth_message_registration_completed_1'] = 'You have successfully registered. Check your email address to activate your account.';
 $lang['auth_message_registration_completed_2'] = 'Vadybininkas sėkmingai užregistruotas';

@@ -1,24 +1,24 @@
-<div id="current-table">
+<div class="tables">
 <table>
     <tr>
-        <th class="padding">Naujos užklausos</th>
-        <td class="padding-td"><?php echo $current['c_new']; ?></td>
+        <th>Naujos užklausos</th>
+        <td><?php echo $current['c_new']; ?></td>
     </tr>
     <tr>
-        <th class="padding">Priskirtos užklausos</th>
-        <td class="padding-td"><?php echo $current['c_assign']; ?></td>
+        <th>Priskirtos užklausos</th>
+        <td><?php echo $current['c_assign']; ?></td>
     </tr>
     <tr>
-        <th class="padding">Sėkmingos užklauoss</th>
-        <td class="padding-td"><?php echo $current['c_success']; ?></td>
+        <th>Sėkmingos užklauoss</th>
+        <td><?php echo $current['c_success']; ?></td>
     </tr>
     <tr>
-        <th class="padding">Nesėkmingos užklausos</th>
-        <td class="padding-td"><?php echo $current['c_fail']; ?></td>
+        <th>Nesėkmingos užklausos</th>
+        <td><?php echo $current['c_fail']; ?></td>
     </tr>
     <tr>
-        <th class="padding">Šlamšto užklausos</th>
-        <td class="padding-td"><?php echo $current['c_spam']; ?></td>
+        <th>Šlamšto užklausos</th>
+        <td><?php echo $current['c_spam']; ?></td>
     </tr>
 </table>
 </div>

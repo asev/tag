@@ -30,7 +30,6 @@ h2 {
 
 h3 {
     font-size: 120%;
-    border-bottom: 1px solid #ddd;
     padding-bottom: 5px;
     margin-top: 25px;
     margin-bottom: 14px;
@@ -78,6 +77,7 @@ h5 {
 #header {
     padding: 10px 0 0 0;
     position: relative;
+    width: 800px;
 }
 
 #content {
@@ -105,7 +105,7 @@ h5 {
     cursor: auto;
 }
 
-#request-form textarea{
+textarea{
     font-family: arial;
 }
 
@@ -131,8 +131,7 @@ h5 {
 }
 
 #request {
-    float: left;
-    margin-top: 10px;
+    margin: 10px 0px 30px;
 }
 
 #request .subject-date p, h2 {
@@ -426,7 +425,7 @@ p.logout{
 }
 
 #log-in input[type="submit"], #register-form input[type="submit"]{
-    margin: 27px 0px;
+    margin: 20px 0px;
     padding: 2px 5px;
 }
 
@@ -484,11 +483,7 @@ label{
     border-right: none;
 }
 
-td.border-none{
-    border: none;
-}
-
-#personal-manager tr{
+#personal-manager tr, #personal-manager td{
     border-right: none;
     border-left: none;
     border-top: none;
@@ -507,7 +502,104 @@ td.border-none{
     margin: 32px 0px;
 }
 
+/* Manager-request */
 
+.manage-request li{
+    border-right: solid 1px #d0553d;
+}
+
+.manage-request ul li{
+    display: inline-block;
+    margin: 15px 0px;
+}
+
+.manage-request li:last-child{
+    border: none;
+}
+
+.manage-request li{
+    padding: 0px 8px;
+}
+
+.manage-request a:hover{
+    color: #a5422f;
+}
+
+.manage-request label{
+    font-style: italic;
+}
+
+.manage-request textarea{
+    margin: 5px 5px;
+}
+
+.manage-request input[type="submit"]{
+    display: block;
+    margin: 5px 5px;
+    padding: 2px 5px;
+}
+
+.manage-request p{
+    font-weight: bold;
+    font-style: italic;
+    font-size: 13px;
+    padding: 10px 5px 10px;
+}
+
+.manage-request p.order{
+    font-style: normal;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.manage-request{
+    margin-bottom: 10px;
+}
+
+.manage-request select{
+    margin: 0px 5px 13px 5px;
+}
+
+.manage-request input[value="Keisti vadybininką"]{
+    display: inline;
+}
+
+
+/* meniu boss */
+
+.sub-menu li {
+    display: inline-block;
+    border-right: solid 1px #d0553d;
+    padding: 2px 10px;
+    margin: 10px 0px;
+}
+
+.sub-menu li:last-child {
+    border: none;
+}
+
+/* boss tables */
+
+.tables th{
+    padding: 3px 5px;
+    text-align: left;
+}
+
+.tables td{
+    padding: 3px 14px;
+    text-align: center;
+}
+
+.tables{
+    margin: 20px 5px;
+}
+
+/*order table */
+
+.order-table table{
+    width: 100%;
+    text-align: center;
+}
 
 
 
