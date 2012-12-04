@@ -37,18 +37,22 @@ $itemQuantity = array(
 );
 
 ?>
-<div id="item-form">
+<div id="item-form" class="order-table">
     <?php echo validation_errors(); ?>
-    <?php echo '<table cellspacing="0" cellpadding="1" border="1" width=82%>'; ?>
-    <?php echo '<tr><td align=center>Pavadinimas</td><td align=center>Kaina</td><td align=center>Kiekis</td></tr>'; ?>
+    <table>
+        <tr>
+    <td>Pavadinimas</td>
+            <td>Kaina</td>
+            <td>Kiekis</td>
+            </tr>
     <?php foreach($get_items as $row): ?>
-    <?php echo '<tr>'; ?>
-    <?php echo '<td align=right width=58%>'.$row['itemName'].'</td>'; ?>
-    <?php echo '<td align=right width=15%>'.$row['itemPrice'].'</td>'; ?>
-    <?php echo '<td align=right>'.$row['itemQuantity'].'</td>'; ?>
-    <?php echo '</tr>'; ?>
+    <tr>
+    <td><?php echo $row['itemName']; ?></td>
+    <td><?php echo $row['itemPrice']; ?></td>
+    <td><?php echo $row['itemQuantity']; ?></td>
+    </tr>
     <?php endforeach; ?>
-    <?php echo '</table>'; ?>
+    </table>
     <?php echo form_open(''); ?>
     <?php echo form_input($itemName); ?>
     <?php echo form_input($itemPrice); ?>

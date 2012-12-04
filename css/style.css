@@ -271,6 +271,7 @@ h2 {
 
 table#requests-list {
     width: 100%;
+    margin-bottom: 10px;
 }
 
 #requests-list tr {
@@ -596,9 +597,21 @@ label{
 
 /*order table */
 
+.order-table{
+    margin-top: 20px;
+}
+
 .order-table table{
     width: 100%;
     text-align: center;
+}
+
+#item-form form{
+    margin: 20px 0px;
+}
+
+#item-form form input{
+    margin: 0px 15px;
 }
 
 
