@@ -1,4 +1,4 @@
-<?php //@toGin Grazus vaizdavimas
+<?php
 
 $messages = array(
     'success' => "Sėkmingai pakeista užklausos būsena",

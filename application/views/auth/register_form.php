@@ -1,4 +1,4 @@
-<?php //@toGin pažiūrėk kaip atrodo su vadovo accountu per /auth/register ir pataisyk
+<?php
 if ($use_username) {
 	$username = array(
 		'name'	=> 'username',
